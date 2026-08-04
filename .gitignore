@@ -1,0 +1,5 @@
+build/
+*.o
+highscores.txt
+.vscode/
+.DS_Store
