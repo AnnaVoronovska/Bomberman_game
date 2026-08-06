@@ -20,6 +20,7 @@ namespace bomberman {
 
 constexpr int GRID_COLS = 13;
 constexpr int GRID_ROWS = 11;
+constexpr double LEVEL_TIME_SECONDS = 180.0; // 3 minuten per level
 
 class World : public Subject {
 public:
@@ -32,14 +33,31 @@ public:
     bool didPlayerWin() const { return playerWon_; }
     std::shared_ptr<Character> getPlayer() const { return player_; }
 
+    // Level-timer: elk level heeft LEVEL_TIME_SECONDS. Als de tijd op is
+    // voor de speler alle vijanden verslaat, verliest de speler.
+    double getTimeRemaining() const { return timeRemaining_; }
+    int getCurrentLevel() const { return currentLevel_; }
+
     // Input van de representatie-laag wordt hier vertaald naar logica.
     void setPlayerDirection(Direction dir);
     void requestPlayerBomb();
 
 private:
     Vec2 cellToWorld(int col, int row) const;
+    std::pair<int, int> cellOfPosition(const Vec2& pos) const;
     Wall* wallAtCell(int col, int row) const;
     bool isBombAt(int col, int row) const;
+
+    // Echte BFS-pathfinding voor bot-bewegingsdoelen (power-up, muur om te
+    // bombarderen, ...). Geeft de eerste stap richting het doel terug via
+    // outDir. Zonder dit liepen bots soms recht tegen een pilaar/muur aan
+    // die toevallig tussen hen en hun doel stond, en bleven ze daar
+    // permanent tegen "plakken" omdat er geen alternatieve richting werd
+    // overwogen. targetAdjacent = true betekent: elke tegel naast
+    // (targetCol, targetRow) is al een geldig doel (gebruikt om naast een
+    // muur te gaan staan, want je kan nooit op een muur-tegel staan).
+    bool findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow,
+                           bool targetAdjacent, Direction& outDir) const;
 
     void tryMoveCharacter(Character& c, double deltaTime);
     void placeBomb(const std::shared_ptr<Character>& owner);
@@ -66,6 +84,8 @@ private:
     bool gameOver_ = false;
     bool playerWon_ = false;
     bool pendingPlayerBomb_ = false;
+    double timeRemaining_ = LEVEL_TIME_SECONDS;
+    int currentLevel_ = 1;
 
     void collectDangerTiles(std::vector<std::vector<bool>>& danger) const;
     bool findEscapeDirection(int fromCol, int fromRow,

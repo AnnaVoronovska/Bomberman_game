@@ -35,4 +35,8 @@ private:
     sf::Font font_;
     bool fontLoaded_ = false;
     sf::Texture spriteSheet_;
+
+    // "STAGE 1"-banner die kort getoond wordt net na het starten van een level.
+    double stageBannerTimer_ = 0.0;
+    static constexpr double STAGE_BANNER_DURATION = 1.6;
 };

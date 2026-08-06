@@ -81,7 +81,10 @@ Character::Character(Vec2 position, Vec2 size, bool isBot)
 void Character::update(double deltaTime) {
     // Beweging gebeurt bewust NIET hier: World moet eerst botsingen met
     // muren en bommen controleren voor de positie effectief verandert.
-    (void)deltaTime;
+    if (invulnerableTimer_ > 0.0) {
+        invulnerableTimer_ -= deltaTime;
+        if (invulnerableTimer_ < 0.0) invulnerableTimer_ = 0.0;
+    }
 }
 
 void Character::applyPowerUp(PowerUpType type) {
@@ -103,6 +106,17 @@ void Character::die() {
     if (!alive_) return;
     alive_ = false;
     notify(Event{EventType::Died, this});
+}
+
+void Character::loseLife() {
+    if (!alive_ || isInvulnerable()) return;
+    if (lives_ > 0) --lives_;
+    notify(Event{EventType::Damaged, this});
+    if (lives_ <= 0) {
+        die();
+    } else {
+        invulnerableTimer_ = 1.5; // korte onkwetsbaarheid na een treffer
+    }
 }
 
 } // namespace bomberman

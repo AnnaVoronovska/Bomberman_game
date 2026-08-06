@@ -17,6 +17,7 @@ enum class EventType {
     Tick,             // één update-stap is voorbij (voor Score: tijd-bonus)
     Moved,            // entity is van positie/richting veranderd
     Died,             // een character is gestorven (voor animaties)
+    Damaged,          // een character verloor 1 leven (nog niet dood)
     BlockDestroyed,   // een breekbare muur werd vernield
     PowerUpCollected, // een power-up werd opgeraapt door de Player
     BombPlaced,       // een bom werd geplaatst

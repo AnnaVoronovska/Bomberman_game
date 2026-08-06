@@ -14,6 +14,13 @@ Vec2 World::cellToWorld(int col, int row) const {
     return Vec2(-1.0 + cw * (col + 0.5), -1.0 + ch * (row + 0.5));
 }
 
+std::pair<int, int> World::cellOfPosition(const Vec2& pos) const {
+    double cw = 2.0 / GRID_COLS, ch = 2.0 / GRID_ROWS;
+    int col = static_cast<int>(std::round((pos.x + 1.0) / cw - 0.5));
+    int row = static_cast<int>(std::round((pos.y + 1.0) / ch - 0.5));
+    return {col, row};
+}
+
 // ---------------- Arena opbouwen ----------------
 
 void World::generateArena() {
@@ -86,14 +93,41 @@ void World::requestPlayerBomb() {
 
 void World::tryMoveCharacter(Character& c, double deltaTime) {
     if (!c.isAlive()) return;
+    Direction dir = c.getDirection();
+    if (dir == Direction::None) return;
+
     double speed = c.getSpeed();
     Vec2 delta(0, 0);
-    switch (c.getDirection()) {
+    switch (dir) {
         case Direction::Up:    delta = Vec2(0, -speed * deltaTime); break;
         case Direction::Down:  delta = Vec2(0,  speed * deltaTime); break;
         case Direction::Left:  delta = Vec2(-speed * deltaTime, 0); break;
         case Direction::Right: delta = Vec2( speed * deltaTime, 0); break;
         default: return;
+    }
+
+    // Karakters zijn kleiner dan een tegel, dus wanneer je tegen een muur
+    // botst terwijl je bv. naar rechts loopt, stop je niet exact in het
+    // midden van je tegel maar een klein stukje ernaartoe verschoven. Die
+    // kleine verschuiving is vaak net genoeg om de hoek van een muur in de
+    // loodrechte rij/kolom te raken -> je kan dan nooit meer omdraaien en
+    // blijft tegen de muur "plakken". Fix: voor we bewegen, snappen we de as
+    // LOODRECHT op de huidige bewegingsrichting naar het exacte midden van
+    // de tegel (enkel als we al dicht genoeg bij dat midden zitten, dus dit
+    // verplaatst je nooit ineens naar een andere tegel of door een muur).
+    {
+        double cw = 2.0 / GRID_COLS, ch = 2.0 / GRID_ROWS;
+        Vec2 snapped = c.getPosition();
+        if (dir == Direction::Left || dir == Direction::Right) {
+            int row = static_cast<int>(std::round((snapped.y + 1.0) / ch - 0.5));
+            double rowCenter = cellToWorld(0, row).y;
+            if (std::abs(snapped.y - rowCenter) < ch * 0.5) snapped.y = rowCenter;
+        } else {
+            int col = static_cast<int>(std::round((snapped.x + 1.0) / cw - 0.5));
+            double colCenter = cellToWorld(col, 0).x;
+            if (std::abs(snapped.x - colCenter) < cw * 0.5) snapped.x = colCenter;
+        }
+        c.setPosition(snapped);
     }
 
     auto standing = c.getStandingOnBomb().lock();
@@ -223,14 +257,17 @@ void World::spreadExplosion(int col, int row, int dcol, int drow, int radius,
             }
         }
 
-        // Characters op deze tegel sterven onmiddellijk.
+        // Characters op deze tegel verliezen 1 leven (bij 0 levens: dood).
         Wall probe(target, Vec2(2.0 / GRID_COLS, 2.0 / GRID_ROWS), false);
         for (auto& c2 : characters_) {
             if (c2->isAlive() && c2->intersects(probe)) {
                 bool wasPlayer = (c2 == player_);
-                c2->die();
-                if (wasPlayer) notify(Event{EventType::PlayerDied, &source});
-                else if (causedByPlayer) notify(Event{EventType::EnemyKilled, &source});
+                bool wasAlive = c2->isAlive();
+                c2->loseLife();
+                if (wasAlive && !c2->isAlive()) {
+                    if (wasPlayer) notify(Event{EventType::PlayerDied, &source});
+                    else if (causedByPlayer) notify(Event{EventType::EnemyKilled, &source});
+                }
             }
         }
     }
@@ -334,10 +371,69 @@ bool World::findEscapeDirection(int fromCol, int fromRow,
     return false; // geen veilige tegel bereikbaar
 }
 
+// Echte BFS naar een bewegingsdoel (power-up, muur om te bombarderen, ...).
+// Dit is de kern van de fix voor "bots blijven tegen muren plakken": voordien
+// werd de richting bepaald door enkel dx/dy van bot naar doel te vergelijken
+// (bv. "doel ligt meer naar rechts dan naar boven -> ga rechts"), zonder ooit
+// te controleren of er een muur/pilaar precies tussen bot en doel stond. Als
+// dat toevallig zo was, bleef diezelfde geblokkeerde richting élke tick
+// opnieuw gekozen worden en kwam de bot dus nooit meer in beweging (het
+// "onzichtbare muur" / "blijft op zijn plaats bewegen" effect). BFS kiest
+// altijd de eerste stap van een pad dat ook echt bestaat, of geeft eerlijk
+// false terug zodat de aanroeper naar de volgende prioriteit (of willekeurig
+// rondlopen) kan overschakelen in plaats van vast te lopen.
+bool World::findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow,
+                               bool targetAdjacent, Direction& outDir) const {
+    if (fromCol < 0 || fromCol >= GRID_COLS || fromRow < 0 || fromRow >= GRID_ROWS) return false;
+
+    auto isGoal = [&](int c, int r) {
+        if (targetAdjacent) return std::abs(c - targetCol) + std::abs(r - targetRow) == 1;
+        return c == targetCol && r == targetRow;
+    };
+
+    if (isGoal(fromCol, fromRow)) return false; // al ter plaatse, geen stap nodig
+
+    struct Node { int col, row, firstStepIdx; };
+    std::vector<std::vector<bool>> visited(GRID_ROWS, std::vector<bool>(GRID_COLS, false));
+    std::queue<Node> q;
+
+    const int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    const Direction dirEnum[4] = {Direction::Right, Direction::Left, Direction::Down, Direction::Up};
+
+    visited[fromRow][fromCol] = true;
+    for (int i = 0; i < 4; ++i) {
+        int c = fromCol + dirs[i][0], r = fromRow + dirs[i][1];
+        if (c < 0 || c >= GRID_COLS || r < 0 || r >= GRID_ROWS) continue;
+        if (wallAtCell(c, r) != nullptr) continue;
+        if (isBombAt(c, r)) continue;
+        if (visited[r][c]) continue;
+        visited[r][c] = true;
+        q.push({c, r, i});
+    }
+
+    while (!q.empty()) {
+        Node n = q.front(); q.pop();
+        if (isGoal(n.col, n.row)) {
+            outDir = dirEnum[n.firstStepIdx];
+            return true;
+        }
+        for (int i = 0; i < 4; ++i) {
+            int c = n.col + dirs[i][0], r = n.row + dirs[i][1];
+            if (c < 0 || c >= GRID_COLS || r < 0 || r >= GRID_ROWS) continue;
+            if (wallAtCell(c, r) != nullptr) continue;
+            if (isBombAt(c, r)) continue;
+            if (visited[r][c]) continue;
+            visited[r][c] = true;
+            q.push({c, r, n.firstStepIdx});
+        }
+    }
+    return false; // geen bereikbaar pad naar dit doel
+}
+
 // ---------------- Eenvoudige bot-AI ----------------
 // Volgt de 4 vereisten uit de opgave, in volgorde van prioriteit:
 // 1) overleven (weg van bommen), 2) power-ups rapen,
-// 3) muren afbreken / vijanden aanvallen, 4) willekeurig rondlopen.
+// 3) muren afbreken / vijanden aanvallen, 4) actief op zoek naar een nieuw doel.
 void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime) {
     (void)deltaTime;
     if (!bot->isAlive()) { bot->setDirection(Direction::None); return; }
@@ -359,7 +455,9 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
         return;
     }
 
-    // 2) Hebzucht: loop naar de dichtstbijzijnde power-up.
+    // 2) Hebzucht: loop naar de dichtstbijzijnde power-up (via echte
+    //    pathfinding, zodat een pilaar/muur tussen bot en power-up de bot
+    //    niet permanent laat vastlopen).
     if (!powerUps_.empty()) {
         auto closest = std::min_element(powerUps_.begin(), powerUps_.end(),
             [&](const std::shared_ptr<PowerUp>& a, const std::shared_ptr<PowerUp>& b) {
@@ -367,11 +465,14 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
                 double db = std::abs(b->getPosition().x - pos.x) + std::abs(b->getPosition().y - pos.y);
                 return da < db;
             });
-        Vec2 target = (*closest)->getPosition();
-        double dx = target.x - pos.x, dy = target.y - pos.y;
-        if (std::abs(dx) > std::abs(dy)) bot->setDirection(dx > 0 ? Direction::Right : Direction::Left);
-        else                              bot->setDirection(dy > 0 ? Direction::Down  : Direction::Up);
-        return;
+        auto targetCell = cellOfPosition((*closest)->getPosition());
+        Direction stepDir;
+        if (findPathDirection(myCol, myRow, targetCell.first, targetCell.second, false, stepDir)) {
+            bot->setDirection(stepDir);
+            return;
+        }
+        // Geen bereikbaar pad naar deze power-up: val door naar de volgende
+        // prioriteit i.p.v. tegen een muur te blijven "plakken".
     }
 
     // 3) Agressie: plaats een bom naast een breekbare muur of een naburige vijand,
@@ -379,8 +480,9 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
     int col = myCol;
     int row = myRow;
 
-    bool nearBreakable = false;
     const int offsets[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+
+    bool nearBreakable = false;
     for (auto& off : offsets) {
         Wall* w = wallAtCell(col + off[0], row + off[1]);
         if (w && w->isDestructible()) nearBreakable = true;
@@ -393,11 +495,13 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
         if (d < cw * (bot->getBombRadius() + 1)) enemyNearby = true;
     }
 
+    // Simuleer: voeg de hypothetische bom toe aan de danger-map en kijk of er
+    // dan nog een bereikbare veilige tegel is. Onthoud meteen ook de vluchtrichting,
+    // zodat de bot na het plaatsen geen tick verliest voor hij begint te vluchten.
+    std::vector<std::vector<bool>> simDanger = danger;
+    Direction plannedFleeDir = Direction::None;
     bool hasEscapeRoute = false;
     if ((nearBreakable || enemyNearby) && bot->canPlaceBomb() && !isBombAt(col, row)) {
-        // Simuleer: voeg de hypothetische bom toe aan de danger-map en kijk of er
-        // dan nog een bereikbare veilige tegel is.
-        std::vector<std::vector<bool>> simDanger = danger;
         auto markCell = [&](int c, int r) {
             if (c >= 0 && c < GRID_COLS && r >= 0 && r < GRID_ROWS) simDanger[r][c] = true;
         };
@@ -414,18 +518,46 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
                 markCell(c, r);
             }
         }
-        Direction dummy;
-        hasEscapeRoute = findEscapeDirection(col, row, simDanger, dummy);
+        hasEscapeRoute = findEscapeDirection(col, row, simDanger, plannedFleeDir);
     }
 
     if ((nearBreakable || enemyNearby) && bot->canPlaceBomb() && !isBombAt(col, row) && hasEscapeRoute) {
         placeBomb(bot);
-        bot->setDirection(Direction::None);
+        // Meteen wegvluchten in de al-berekende veilige richting i.p.v. stil
+        // te blijven staan (dat kostte vroeger een volle tick en zorgde ervoor
+        // dat bots soms in hun eigen bom bleven staan).
+        bot->setDirection(plannedFleeDir);
         return;
     }
 
-    // 4) Fallback: af en toe van richting veranderen, willekeurig rondlopen.
-    if (bot->getDirection() == Direction::None || Random::instance().getDouble01() < 0.02) {
+    // 4) Actief op zoek: loop richting de dichtstbijzijnde breekbare muur zodat
+    //    de bot periodiek nieuwe bom-kansen opzoekt i.p.v. passief te wachten
+    //    tot er toevallig eentje naast hem opduikt.
+    Wall* nearestBreakable = nullptr;
+    double bestDist = 1e18;
+    for (auto& w : walls_) {
+        if (!w->isDestructible()) continue;
+        double d = std::abs(w->getPosition().x - pos.x) + std::abs(w->getPosition().y - pos.y);
+        if (d < bestDist) { bestDist = d; nearestBreakable = w.get(); }
+    }
+
+    if (nearestBreakable) {
+        // Pathfinding naar een tegel NAAST de muur (je kan nooit op de
+        // muur-tegel zelf staan). Dit vervangt de vroegere dx/dy-gok +
+        // "1 loodrechte as als fallback" aanpak, die de bot voorgoed tegen
+        // een muur liet plakken zodra zowel de gewenste as als die ene
+        // fallback-as toevallig allebei geblokkeerd waren.
+        auto targetCell = cellOfPosition(nearestBreakable->getPosition());
+        Direction stepDir;
+        if (findPathDirection(myCol, myRow, targetCell.first, targetCell.second, true, stepDir)) {
+            bot->setDirection(stepDir);
+            return;
+        }
+        // Geen bereikbaar pad naar deze muur: val door naar willekeurig rondlopen.
+    }
+
+    // 5) Fallback: geen breekbare muren meer over, willekeurig rondlopen.
+    if (bot->getDirection() == Direction::None || Random::instance().getDouble01() < 0.05) {
         int r = Random::instance().getInt(0, 3);
         bot->setDirection(r == 0 ? Direction::Up : r == 1 ? Direction::Down
                           : r == 2 ? Direction::Left : Direction::Right);
@@ -442,15 +574,45 @@ void World::update(double deltaTime) {
         pendingPlayerBomb_ = false;
     }
 
+    // Level-timer aftellen: tijd op = game over (speler verliest).
+    timeRemaining_ -= deltaTime;
+    if (timeRemaining_ <= 0.0) {
+        timeRemaining_ = 0.0;
+        if (!gameOver_) {
+            gameOver_ = true;
+            playerWon_ = false;
+            notify(Event{EventType::PlayerDied, player_.get()});
+        }
+        return;
+    }
+
+    player_->update(deltaTime); // telt o.a. onkwetsbaarheids-timer af
     tryMoveCharacter(*player_, deltaTime);
     for (std::size_t i = 1; i < characters_.size(); ++i) {
         // AI aan: elke bot beslist zelf (vluchten voor gevaar, powerup grijpen,
         // bom plaatsen bij muur/vijand, anders random rondlopen).
+        characters_[i]->update(deltaTime);
         updateBotAI(characters_[i], deltaTime);
         tryMoveCharacter(*characters_[i], deltaTime);
     }
 
     updateBombs(deltaTime);
+
+    // Contact tussen speler en een vijand: -1 leven voor de speler
+    // (i.p.v. onmiddellijke dood), met korte onkwetsbaarheid erna.
+    if (player_->isAlive()) {
+        for (std::size_t i = 1; i < characters_.size(); ++i) {
+            if (!characters_[i]->isAlive()) continue;
+            if (player_->intersects(*characters_[i])) {
+                bool wasAlive = player_->isAlive();
+                player_->loseLife();
+                if (wasAlive && !player_->isAlive()) {
+                    notify(Event{EventType::PlayerDied, player_.get()});
+                }
+                break;
+            }
+        }
+    }
 
     // Power-ups oprapen.
     for (auto& c : characters_) {

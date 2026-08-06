@@ -110,6 +110,13 @@ public:
     bool isAlive() const { return alive_; }
     void die(); // notify + character stopt met bewegen/tekenen
 
+    // Levens-systeem: contact met een vijand of een explosie kost 1 leven
+    // i.p.v. onmiddellijk te sterven. Na een treffer is het character
+    // eventjes onkwetsbaar zodat je niet meerdere levens in 1 frame verliest.
+    int getLives() const { return lives_; }
+    void loseLife(); // -1 leven (notify); bij 0 levens -> die()
+    bool isInvulnerable() const { return invulnerableTimer_ > 0.0; }
+
     bool isBot() const { return isBot_; }
 
     // De bom waar het character net op staat: die mag je nog doorlopen
@@ -126,6 +133,8 @@ private:
     bool alive_ = true;
     bool isBot_;
     std::weak_ptr<Bomb> standingOnBomb_;
+    int lives_ = 3;
+    double invulnerableTimer_ = 0.0; // seconden onkwetsbaar na een treffer
 };
 
 } // namespace bomberman
