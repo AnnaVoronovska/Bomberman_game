@@ -12,6 +12,13 @@
 
 namespace bomberman {
 
+// Hoeveel tijd (in seconden) een bot minimaal moet wachten tussen twee
+// bom-plaatsingen. Losstaand van maxBombs_/bombsInPlay_ (die tellen enkel
+// hoeveel bommen tegelijk "in de lucht" mogen zijn), dit is puur een
+// tempo-rem zodat bots niet elke tick opnieuw een bom neerzetten zodra
+// hun vorige bom ontploft is.
+constexpr double BOT_BOMB_COOLDOWN_SECONDS = 3.0;
+
 enum class Direction { Up, Down, Left, Right, None };
 
 class EntityModel : public Subject {
@@ -101,9 +108,14 @@ public:
     int getMaxBombs() const { return maxBombs_; }
     int getBombRadius() const { return bombRadius_; }
     int getBombsInPlay() const { return bombsInPlay_; }
-    void onBombPlaced() { ++bombsInPlay_; }
+    void onBombPlaced() {
+        ++bombsInPlay_;
+        if (isBot_) bombCooldownRemaining_ = BOT_BOMB_COOLDOWN_SECONDS;
+    }
     void onBombResolved() { if (bombsInPlay_ > 0) --bombsInPlay_; }
-    bool canPlaceBomb() const { return alive_ && bombsInPlay_ < maxBombs_; }
+    bool canPlaceBomb() const {
+        return alive_ && bombsInPlay_ < maxBombs_ && bombCooldownRemaining_ <= 0.0;
+    }
 
     void applyPowerUp(PowerUpType type);
 
@@ -130,6 +142,7 @@ private:
     int maxBombs_ = 1;
     int bombRadius_ = 1;
     int bombsInPlay_ = 0;
+    double bombCooldownRemaining_ = 0.0; // enkel relevant voor bots, zie BOT_BOMB_COOLDOWN_SECONDS
     bool alive_ = true;
     bool isBot_;
     std::weak_ptr<Bomb> standingOnBomb_;

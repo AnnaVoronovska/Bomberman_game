@@ -76,7 +76,11 @@ bool Bomb::consumeDamageFlag() {
 // ---------------- Character ----------------
 
 Character::Character(Vec2 position, Vec2 size, bool isBot)
-    : EntityModel(position, size), isBot_(isBot) {}
+    : EntityModel(position, size), isBot_(isBot) {
+    // Bots bewegen iets trager dan de speler (was voorheen exact dezelfde
+    // speed_ als de speler, wat ze onnatuurlijk snel liet aanvoelen).
+    if (isBot_) speed_ = 0.325; // ~35% trager dan de speler-basissnelheid (0.5)
+}
 
 void Character::update(double deltaTime) {
     // Beweging gebeurt bewust NIET hier: World moet eerst botsingen met
@@ -84,6 +88,10 @@ void Character::update(double deltaTime) {
     if (invulnerableTimer_ > 0.0) {
         invulnerableTimer_ -= deltaTime;
         if (invulnerableTimer_ < 0.0) invulnerableTimer_ = 0.0;
+    }
+    if (bombCooldownRemaining_ > 0.0) {
+        bombCooldownRemaining_ -= deltaTime;
+        if (bombCooldownRemaining_ < 0.0) bombCooldownRemaining_ = 0.0;
     }
 }
 
