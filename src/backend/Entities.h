@@ -17,7 +17,7 @@ namespace bomberman {
 // hoeveel bommen tegelijk "in de lucht" mogen zijn), dit is puur een
 // tempo-rem zodat bots niet elke tick opnieuw een bom neerzetten zodra
 // hun vorige bom ontploft is.
-constexpr double BOT_BOMB_COOLDOWN_SECONDS = 3.0;
+constexpr double BOT_BOMB_COOLDOWN_SECONDS = 5.0;
 
 enum class Direction { Up, Down, Left, Right, None };
 

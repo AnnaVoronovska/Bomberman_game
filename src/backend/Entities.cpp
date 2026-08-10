@@ -77,9 +77,9 @@ bool Bomb::consumeDamageFlag() {
 
 Character::Character(Vec2 position, Vec2 size, bool isBot)
     : EntityModel(position, size), isBot_(isBot) {
-    // Bots bewegen iets trager dan de speler (was voorheen exact dezelfde
+    // Bots bewegen trager dan de speler (was voorheen exact dezelfde
     // speed_ als de speler, wat ze onnatuurlijk snel liet aanvoelen).
-    if (isBot_) speed_ = 0.325; // ~35% trager dan de speler-basissnelheid (0.5)
+    if (isBot_) speed_ = 0.22; // ~55% trager dan de speler-basissnelheid (0.5)
 }
 
 void Character::update(double deltaTime) {
