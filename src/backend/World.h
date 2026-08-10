@@ -48,17 +48,6 @@ private:
     Wall* wallAtCell(int col, int row) const;
     bool isBombAt(int col, int row) const;
 
-    // Echte BFS-pathfinding voor bot-bewegingsdoelen (power-up, muur om te
-    // bombarderen, ...). Geeft de eerste stap richting het doel terug via
-    // outDir. Zonder dit liepen bots soms recht tegen een pilaar/muur aan
-    // die toevallig tussen hen en hun doel stond, en bleven ze daar
-    // permanent tegen "plakken" omdat er geen alternatieve richting werd
-    // overwogen. targetAdjacent = true betekent: elke tegel naast
-    // (targetCol, targetRow) is al een geldig doel (gebruikt om naast een
-    // muur te gaan staan, want je kan nooit op een muur-tegel staan).
-    bool findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow,
-                           bool targetAdjacent, Direction& outDir) const;
-
     void tryMoveCharacter(Character& c, double deltaTime);
     void placeBomb(const std::shared_ptr<Character>& owner);
     void updateBombs(double deltaTime);
@@ -91,6 +80,15 @@ private:
     bool findEscapeDirection(int fromCol, int fromRow,
                               const std::vector<std::vector<bool>>& danger,
                               Direction& outDir) const;
+
+    // Pathfinding naar een willekeurig doel (power-up, muur om te bombarderen, ...).
+    // 'danger' wordt behandeld als onbegaanbaar, net als muren/bommen, zodat een
+    // bot NOOIT via een actieve gevarenzone naar zijn doel loopt (dat veroorzaakte
+    // de bug waarbij een bot na het vluchten meteen terug de gevarenzone in werd
+    // getrokken door prioriteit 2/4, bleef "pendelen", en soms in zijn eigen bom stierf).
+    bool findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow,
+                           bool targetAdjacent, const std::vector<std::vector<bool>>& danger,
+                           Direction& outDir) const;
 };
 
 } // namespace bomberman

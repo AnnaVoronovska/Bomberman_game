@@ -383,7 +383,8 @@ bool World::findEscapeDirection(int fromCol, int fromRow,
 // false terug zodat de aanroeper naar de volgende prioriteit (of willekeurig
 // rondlopen) kan overschakelen in plaats van vast te lopen.
 bool World::findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow,
-                               bool targetAdjacent, Direction& outDir) const {
+                               bool targetAdjacent, const std::vector<std::vector<bool>>& danger,
+                               Direction& outDir) const {
     if (fromCol < 0 || fromCol >= GRID_COLS || fromRow < 0 || fromRow >= GRID_ROWS) return false;
 
     auto isGoal = [&](int c, int r) {
@@ -400,12 +401,23 @@ bool World::findPathDirection(int fromCol, int fromRow, int targetCol, int targe
     const int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     const Direction dirEnum[4] = {Direction::Right, Direction::Left, Direction::Down, Direction::Up};
 
+    // Een tegel is begaanbaar voor deze pathfinding als er geen muur/bom op staat
+    // EN als hij niet binnen het bereik van een nog-niet-ontplofte bom ligt. Zo
+    // loopt de bot nooit meer via zijn eigen (of andermans) gevarenzone naar een
+    // muur/power-up, wat voordien voor het heen-en-weer-"pendelen" en soms de
+    // dood in de eigen explosie zorgde.
+    auto walkable = [&](int c, int r) {
+        if (wallAtCell(c, r) != nullptr) return false;
+        if (isBombAt(c, r)) return false;
+        if (danger[r][c]) return false;
+        return true;
+    };
+
     visited[fromRow][fromCol] = true;
     for (int i = 0; i < 4; ++i) {
         int c = fromCol + dirs[i][0], r = fromRow + dirs[i][1];
         if (c < 0 || c >= GRID_COLS || r < 0 || r >= GRID_ROWS) continue;
-        if (wallAtCell(c, r) != nullptr) continue;
-        if (isBombAt(c, r)) continue;
+        if (!walkable(c, r)) continue;
         if (visited[r][c]) continue;
         visited[r][c] = true;
         q.push({c, r, i});
@@ -420,14 +432,13 @@ bool World::findPathDirection(int fromCol, int fromRow, int targetCol, int targe
         for (int i = 0; i < 4; ++i) {
             int c = n.col + dirs[i][0], r = n.row + dirs[i][1];
             if (c < 0 || c >= GRID_COLS || r < 0 || r >= GRID_ROWS) continue;
-            if (wallAtCell(c, r) != nullptr) continue;
-            if (isBombAt(c, r)) continue;
+            if (!walkable(c, r)) continue;
             if (visited[r][c]) continue;
             visited[r][c] = true;
             q.push({c, r, n.firstStepIdx});
         }
     }
-    return false; // geen bereikbaar pad naar dit doel
+    return false; // geen bereikbaar (en veilig) pad naar dit doel
 }
 
 // ---------------- Eenvoudige bot-AI ----------------
@@ -467,12 +478,13 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
             });
         auto targetCell = cellOfPosition((*closest)->getPosition());
         Direction stepDir;
-        if (findPathDirection(myCol, myRow, targetCell.first, targetCell.second, false, stepDir)) {
+        if (findPathDirection(myCol, myRow, targetCell.first, targetCell.second, false, danger, stepDir)) {
             bot->setDirection(stepDir);
             return;
         }
-        // Geen bereikbaar pad naar deze power-up: val door naar de volgende
-        // prioriteit i.p.v. tegen een muur te blijven "plakken".
+        // Geen veilig bereikbaar pad naar deze power-up: val door naar de volgende
+        // prioriteit i.p.v. tegen een muur te blijven "plakken" of door een
+        // gevarenzone te lopen.
     }
 
     // 3) Agressie: plaats een bom naast een breekbare muur of een naburige vijand,
@@ -549,11 +561,13 @@ void World::updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime)
         // fallback-as toevallig allebei geblokkeerd waren.
         auto targetCell = cellOfPosition(nearestBreakable->getPosition());
         Direction stepDir;
-        if (findPathDirection(myCol, myRow, targetCell.first, targetCell.second, true, stepDir)) {
+        if (findPathDirection(myCol, myRow, targetCell.first, targetCell.second, true, danger, stepDir)) {
             bot->setDirection(stepDir);
             return;
         }
-        // Geen bereikbaar pad naar deze muur: val door naar willekeurig rondlopen.
+        // Geen veilig bereikbaar pad naar deze muur (bv. hij ligt nog in het bereik
+        // van een net geplaatste bom): val door naar willekeurig rondlopen i.p.v.
+        // terug de gevarenzone in te lopen.
     }
 
     // 5) Fallback: geen breekbare muren meer over, willekeurig rondlopen.
