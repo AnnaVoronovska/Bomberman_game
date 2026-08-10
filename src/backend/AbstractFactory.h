@@ -13,14 +13,15 @@
 
 namespace bomberman {
 
-class AbstractFactory {
-public:
-    virtual ~AbstractFactory() = default;
+    class AbstractFactory {
+    public:
+        virtual ~AbstractFactory() = default;
 
-    virtual std::shared_ptr<Character> createCharacter(Vec2 position, bool isBot) = 0;
-    virtual std::shared_ptr<Wall> createWall(Vec2 position, bool destructible) = 0;
-    virtual std::shared_ptr<Bomb> createBomb(Vec2 position, int radius, std::weak_ptr<Character> owner) = 0;
-    virtual std::shared_ptr<PowerUp> createPowerUp(Vec2 position, PowerUpType type) = 0;
-};
+        virtual std::shared_ptr<Character> createCharacter(Vec2 position, bool isBot) = 0;
+        virtual std::shared_ptr<Wall> createWall(Vec2 position, bool destructible) = 0;
+        virtual std::shared_ptr<Bomb> createBomb(Vec2 position, int radius, std::weak_ptr<Character> owner) = 0;
+        virtual std::shared_ptr<PowerUp> createPowerUp(Vec2 position, PowerUpType type) = 0;
+        virtual std::shared_ptr<Door> createDoor(Vec2 position) = 0;
+    };
 
 } // namespace bomberman

@@ -47,6 +47,11 @@ void PowerUp::collect() {
     markForRemoval();
 }
 
+// ---------------- Door ----------------
+
+Door::Door(Vec2 position, Vec2 size)
+    : EntityModel(position, size) {}
+
 // ---------------- Bomb ----------------
 
 Bomb::Bomb(Vec2 position, Vec2 size, int radius, std::weak_ptr<Character> owner, double fuseTime)
@@ -80,6 +85,13 @@ Character::Character(Vec2 position, Vec2 size, bool isBot)
     // Bots bewegen trager dan de speler (was voorheen exact dezelfde
     // speed_ als de speler, wat ze onnatuurlijk snel liet aanvoelen).
     if (isBot_) speed_ = 0.22; // ~55% trager dan de speler-basissnelheid (0.5)
+
+    // Vijanden sterven in klassieke Bomberman altijd in ÉÉN treffer, in
+    // tegenstelling tot de speler die meerdere levens heeft. Voorheen
+    // gebruikten bots hetzelfde lives_ = 3 als de speler, waardoor een bom
+    // die een vijand "letterlijk ernaast" raakte hem soms NIET doodde (hij
+    // ging gewoon van 3 naar 2 levens) - dat leek dan een bug/inconsistentie.
+    if (isBot_) lives_ = 1;
 }
 
 void Character::update(double deltaTime) {

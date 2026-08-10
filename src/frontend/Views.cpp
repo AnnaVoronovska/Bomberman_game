@@ -143,6 +143,56 @@ void PowerUpView::draw(sf::RenderWindow& window) {
     window.draw(sprite);
 }
 
+// ---------------- DoorView ----------------
+
+DoorView::DoorView(std::weak_ptr<Door> model, const Camera& camera)
+    : EntityView(model, camera), door_(model) {}
+
+void DoorView::draw(sf::RenderWindow& window) {
+    auto d = door_.lock();
+    if (!d) return;
+
+    Vec2 p = camera_.worldToScreen(d->getPosition());
+    Vec2 s = camera_.worldToScreenSize(d->getSize());
+    float x = static_cast<float>(p.x - s.x / 2.0);
+    float y = static_cast<float>(p.y - s.y / 2.0);
+    float w_ = static_cast<float>(s.x);
+    float h_ = static_cast<float>(s.y);
+
+    // Zachte gouden gloed erachter, zodat de deur meteen opvalt tussen de
+    // muren/vloertegels wanneer ze net vrijkomt.
+    pulse_ += (1.0 / 60.0) * 3.0;
+    float glowAlpha = 90.f + 50.f * static_cast<float>(std::sin(pulse_));
+    sf::RectangleShape glow(sf::Vector2f(w_ * 1.25f, h_ * 1.25f));
+    glow.setPosition(x - w_ * 0.125f, y - h_ * 0.125f);
+    glow.setFillColor(sf::Color(255, 210, 90, static_cast<sf::Uint8>(glowAlpha)));
+    window.draw(glow);
+
+    // Houten deurkozijn (donkerbruin).
+    sf::RectangleShape frame(sf::Vector2f(w_, h_));
+    frame.setPosition(x, y);
+    frame.setFillColor(sf::Color(90, 58, 30));
+    window.draw(frame);
+
+    // Deurpaneel: donkere opening waar de speler "doorheen" loopt.
+    sf::RectangleShape panel(sf::Vector2f(w_ * 0.72f, h_ * 0.82f));
+    panel.setPosition(x + w_ * 0.14f, y + h_ * 0.15f);
+    panel.setFillColor(sf::Color(35, 22, 14));
+    window.draw(panel);
+
+    // Boogvormige top: klein rechthoekje bovenaan, geeft een poort-silhouet.
+    sf::RectangleShape arch(sf::Vector2f(w_ * 0.5f, h_ * 0.18f));
+    arch.setPosition(x + w_ * 0.25f, y + h_ * 0.06f);
+    arch.setFillColor(sf::Color(60, 38, 20));
+    window.draw(arch);
+
+    // Gouden deurklink.
+    sf::CircleShape handle(std::max(1.5f, w_ * 0.06f));
+    handle.setPosition(x + w_ * 0.68f, y + h_ * 0.52f);
+    handle.setFillColor(sf::Color(255, 210, 90));
+    window.draw(handle);
+}
+
 // ---------------- BombView ----------------
 
 BombView::BombView(std::weak_ptr<Bomb> model, const Camera& camera, const sf::Texture& texture)

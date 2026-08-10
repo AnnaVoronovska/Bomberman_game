@@ -92,6 +92,13 @@ void Game::update(double dt) {
     }
     world_->update(dt);
     factory_->removeExpiredViews();
+
+    // Speler heeft de verborgen deur bereikt: World is al naar de volgende
+    // stage gegaan (nieuw doolhof, zelfde speler/score). Toon opnieuw de
+    // korte "STAGE X"-banner, net als bij de allereerste start.
+    if (world_->consumeStageAdvanced()) {
+        stageBannerTimer_ = STAGE_BANNER_DURATION;
+    }
     if (world_->isGameOver()) state_ = State::GameOver;
 }
 

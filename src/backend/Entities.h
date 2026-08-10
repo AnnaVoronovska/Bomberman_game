@@ -67,6 +67,14 @@ private:
     PowerUpType type_;
 };
 
+// Verborgen deur: komt tevoorschijn zodra de ene, willekeurig aangeduide
+// breekbare muur die hem verbergt (zie World::doorCol_/doorRow_) ontploft.
+// Loopt de speler erover, dan gaat World naar de volgende stage.
+class Door : public EntityModel {
+public:
+    Door(Vec2 position, Vec2 size);
+};
+
 class Character; // forward declaration: Bomb heeft enkel een niet-eigenaar referentie nodig
 
 class Bomb : public EntityModel {

@@ -58,6 +58,14 @@ std::shared_ptr<PowerUp> ConcreteFactory::createPowerUp(Vec2 position, PowerUpTy
     return model;
 }
 
+std::shared_ptr<Door> ConcreteFactory::createDoor(Vec2 position) {
+    auto model = std::make_shared<Door>(position, Vec2(2.0 / GRID_COLS, 2.0 / GRID_ROWS));
+    auto view = std::make_shared<DoorView>(model, camera_);
+    model->attach(view);
+    views_.push_back(view);
+    return model;
+}
+
 void ConcreteFactory::drawAll(sf::RenderWindow& window) {
     for (auto& v : views_) {
         if (!v->isExpired()) v->draw(window);

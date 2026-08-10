@@ -23,7 +23,12 @@ std::pair<int, int> World::cellOfPosition(const Vec2& pos) const {
 
 // ---------------- Arena opbouwen ----------------
 
-void World::generateArena() {
+void World::buildArena() {
+    walls_.clear();
+    door_.reset();
+    doorCol_ = -1;
+    doorRow_ = -1;
+
     // Cellen die vrij moeten blijven zodat elk character veilig kan spawnen
     // (klassieke "L-vormige" open hoeken uit de originele Bomberman arena).
     auto isSpawnArea = [](int col, int row) {
@@ -37,6 +42,10 @@ void World::generateArena() {
         return false;
     };
 
+    // Onthoudt elke breekbare muur-cel die net gebouwd is: op het einde kiezen
+    // we hieruit willekeurig ÉÉN cel die de verborgen deur verbergt.
+    std::vector<std::pair<int, int>> destructibleCells;
+
     for (int row = 0; row < GRID_ROWS; ++row) {
         for (int col = 0; col < GRID_COLS; ++col) {
             bool border = (row == 0 || row == GRID_ROWS - 1 || col == 0 || col == GRID_COLS - 1);
@@ -49,16 +58,57 @@ void World::generateArena() {
                 // Vooral breekbare blokken, met een kleine kans op lege lucht.
                 if (Random::instance().getDouble01() < 0.8) {
                     walls_.push_back(factory_.createWall(pos, true));
+                    destructibleCells.push_back({col, row});
                 }
             }
         }
     }
+
+    if (!destructibleCells.empty()) {
+        int pick = Random::instance().getInt(0, static_cast<int>(destructibleCells.size()) - 1);
+        doorCol_ = destructibleCells[pick].first;
+        doorRow_ = destructibleCells[pick].second;
+    }
+}
+
+void World::generateArena() {
+    buildArena();
 
     player_ = factory_.createCharacter(cellToWorld(1, 1), false);
     characters_.push_back(player_);
     characters_.push_back(factory_.createCharacter(cellToWorld(GRID_COLS - 2, 1), true));
     characters_.push_back(factory_.createCharacter(cellToWorld(1, GRID_ROWS - 2), true));
     characters_.push_back(factory_.createCharacter(cellToWorld(GRID_COLS - 2, GRID_ROWS - 2), true));
+}
+
+// Speler heeft de verborgen deur bereikt: nieuwe stage met een vers doolhof.
+// De speler zelf (en dus zijn score/lives/power-ups) blijft behouden - enkel
+// de arena, bommen, power-ups en bots worden ververst, net als bij een echte
+// Bomberman level-overgang.
+void World::advanceToNextLevel() {
+    ++currentLevel_;
+
+    buildArena();
+    bombs_.clear();
+    powerUps_.clear();
+
+    characters_.clear();
+    player_->setPosition(cellToWorld(1, 1));
+    player_->setDirection(Direction::None);
+    player_->setStandingOnBomb(std::weak_ptr<Bomb>());
+    characters_.push_back(player_);
+    characters_.push_back(factory_.createCharacter(cellToWorld(GRID_COLS - 2, 1), true));
+    characters_.push_back(factory_.createCharacter(cellToWorld(1, GRID_ROWS - 2), true));
+    characters_.push_back(factory_.createCharacter(cellToWorld(GRID_COLS - 2, GRID_ROWS - 2), true));
+
+    timeRemaining_ = LEVEL_TIME_SECONDS;
+    stageAdvancedFlag_ = true;
+}
+
+bool World::consumeStageAdvanced() {
+    bool v = stageAdvancedFlag_;
+    stageAdvancedFlag_ = false;
+    return v;
 }
 
 // ---------------- Hulpfuncties ----------------
@@ -242,9 +292,17 @@ void World::spreadExplosion(int col, int row, int dcol, int drow, int radius,
         //    (die overleeft deze explosie dan terecht, want stap 1 is al gebeurd).
         if (Wall* w = wallAtCell(c, r)) {
             if (w->isDestructible()) {
+                bool isDoorCell = (c == doorCol_ && r == doorRow_);
                 w->destroy();
                 if (causedByPlayer) notify(Event{EventType::BlockDestroyed, &source});
-                maybeSpawnPowerUp(c, r);
+                if (isDoorCell) {
+                    // Dit was de ene aangeduide muur: de verborgen deur naar
+                    // de volgende stage komt hier tevoorschijn (geen power-up
+                    // op dezelfde tegel, zodat het duidelijk de deur blijft).
+                    door_ = factory_.createDoor(cellToWorld(c, r));
+                } else {
+                    maybeSpawnPowerUp(c, r);
+                }
             }
         }
 
@@ -640,6 +698,13 @@ void World::update(double deltaTime) {
                 break;
             }
         }
+    }
+
+    // Verborgen deur bereikt: nieuwe stage, zelfde speler/score/lives.
+    // Meteen return: deze tick is "klaar", de volgende begint vers in de nieuwe arena.
+    if (door_ && player_->isAlive() && player_->intersects(*door_)) {
+        advanceToNextLevel();
+        return;
     }
 
     if (player_->isAlive()) {

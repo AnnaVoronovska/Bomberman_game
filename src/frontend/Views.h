@@ -49,6 +49,16 @@ private:
     const sf::Texture* texture_ = nullptr;
 };
 
+class DoorView : public EntityView {
+public:
+    DoorView(std::weak_ptr<bomberman::Door> model, const bomberman::Camera& camera);
+    void draw(sf::RenderWindow& window) override;
+
+private:
+    std::weak_ptr<bomberman::Door> door_;
+    double pulse_ = 0.0;
+};
+
 class BombView : public EntityView {
 public:
     BombView(std::weak_ptr<bomberman::Bomb> model, const bomberman::Camera& camera, const sf::Texture& texture);
