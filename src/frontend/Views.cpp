@@ -301,13 +301,83 @@ CharacterView::CharacterView(std::weak_ptr<Character> model, const Camera& camer
                              int rowBase, int colBase)
     : EntityView(model, camera), character_(model), texture_(&texture), rowBase_(rowBase), colBase_(colBase) {}
 
+void CharacterView::onNotify(const Event& e) {
+    if (e.type == EventType::Died && !dying_) {
+        dying_ = true;
+        deathAnimTimer_ = 0.0;
+    } else if (e.type == EventType::PlayerWon) {
+        won_ = true;
+        winAnimTimer_ = 0.0;
+    }
+    EntityView::onNotify(e); // laat de basisklasse 'Removed' nog steeds verwerken
+}
+
 void CharacterView::draw(sf::RenderWindow& window) {
     auto c = character_.lock();
-    if (!c || !c->isAlive())
+    if (!c)
         return;
 
     Vec2 pos = camera_.worldToScreen(c->getPosition());
     Vec2 s = camera_.worldToScreenSize(c->getSize());
+
+    // ---- Death-animatie: personage tolt rond, krimpt en vervaagt i.p.v.
+    // meteen te verdwijnen. Blijft op de laatst gekende positie staan;
+    // het Model zelf wordt niet uit World verwijderd bij overlijden. ----
+    constexpr double DEATH_ANIM_TIME = 0.7; // seconden
+    if (dying_) {
+        deathAnimTimer_ += 1.0 / 60.0;
+        double t = std::min(1.0, deathAnimTimer_ / DEATH_ANIM_TIME); // 0..1 voortgang
+
+        int row = rowBase_;    // "down"-pose als basis voor de death-animatie
+        int col = colBase_;    // eerste (stilstaande) frame van deze skin
+
+        sf::Sprite sprite;
+        sprite.setTexture(*texture_);
+        sprite.setTextureRect(sf::IntRect(col * 32, row * 32, 32, 32));
+        sprite.setOrigin(16.f, 16.f);
+        sprite.setPosition(static_cast<float>(pos.x), static_cast<float>(pos.y));
+
+        float baseScaleX = static_cast<float>(s.x) / 32.f;
+        float baseScaleY = static_cast<float>(s.y) / 32.f;
+        float shrink = 1.0f - 0.85f * static_cast<float>(t); // krimpt tot 15% van de grootte
+        sprite.setScale(baseScaleX * shrink, baseScaleY * shrink);
+        sprite.setRotation(360.f * static_cast<float>(t)); // tolt volledig rond tijdens het verdwijnen
+        auto alpha = static_cast<sf::Uint8>(255.0 * (1.0 - t));
+        sprite.setColor(sf::Color(255, 255, 255, alpha));
+        window.draw(sprite);
+        return; // na deze animatie wordt er niets meer getekend voor dit personage
+    }
+
+    if (!c->isAlive())
+        return; // veiligheidsnet, zou normaal niet bereikt worden (zie dying_ hierboven)
+
+    // ---- Victory-animatie: personage huppelt vrolijk op en neer op de
+    // eindpositie, gebruikt de bestaande loop-frames zodat er geen extra
+    // sprite-assets nodig zijn. ----
+    if (won_) {
+        constexpr double WIN_FRAME_TIME = 0.15;
+        constexpr int WIN_FRAME_COUNT = 4;
+        winAnimTimer_ += 1.0 / 60.0;
+        if (winAnimTimer_ >= WIN_FRAME_TIME) {
+            winAnimTimer_ = 0.0;
+            frame_ = (frame_ + 1) % WIN_FRAME_COUNT;
+        }
+        int row = rowBase_; // "down"-pose, kijkt naar de speler toe
+        int col = colBase_ + frame_;
+
+        // Verticale bounce a.d.h.v. het huidige frame: simpel "op-en-neer
+        // huppelen" effect zonder extra sprite-assets nodig te hebben.
+        float bounce = 4.0f * static_cast<float>(std::sin(frame_ * 3.14159265 / 2.0));
+
+        sf::Sprite sprite;
+        sprite.setTexture(*texture_);
+        sprite.setTextureRect(sf::IntRect(col * 32, row * 32, 32, 32));
+        sprite.setOrigin(16.f, 16.f);
+        sprite.setPosition(static_cast<float>(pos.x), static_cast<float>(pos.y) - bounce);
+        sprite.setScale(static_cast<float>(s.x) / 32.f, static_cast<float>(s.y) / 32.f);
+        window.draw(sprite);
+        return;
+    }
 
     Direction dir = c->getDirection();
     bool moving = (dir != Direction::None);

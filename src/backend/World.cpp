@@ -814,6 +814,10 @@ void World::checkWinCondition() {
         gameOver_ = true;
         playerWon_ = true;
         notify(Event{EventType::PlayerWon, player_.get()});
+        // Ook rechtstreeks op het Player-Model zelf notifyen, zodat de
+        // (op dit Model geabonneerde) CharacterView de victory-animatie
+        // kan starten. World::notify() bereikt enkel World-observers (Score).
+        player_->notify(Event{EventType::PlayerWon, player_.get()});
     }
 }
 

@@ -3,3 +3,4 @@ build/
 highscores.txt
 .vscode/
 .DS_Store
+cmake-build-debug/

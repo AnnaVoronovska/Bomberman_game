@@ -82,6 +82,7 @@ public:
     // in de spritesheet. up = rowBase+1, left = rowBase+2 (zelfde colBase).
     CharacterView(std::weak_ptr<bomberman::Character> model, const bomberman::Camera& camera,
                   const sf::Texture& texture, int rowBase, int colBase = 0);
+    void onNotify(const bomberman::Event& event) override;
     void draw(sf::RenderWindow& window) override;
 
 private:
@@ -94,4 +95,13 @@ private:
     double animTimer_ = 0.0;
     int frame_ = 0;
     bomberman::Direction lastDirection_ = bomberman::Direction::Down;
+
+    // Death-animatie state: gestart zodra het Model een Died-event stuurt.
+    bool dying_ = false;
+    double deathAnimTimer_ = 0.0;
+
+    // Victory-animatie state: gestart zodra de Player een PlayerWon-event
+    // ontvangt (enkel relevant voor de View van de Player).
+    bool won_ = false;
+    double winAnimTimer_ = 0.0;
 };
