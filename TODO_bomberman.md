@@ -6,6 +6,7 @@
 - [x] Death-animatie — personage verdwijnt nu gewoon i.p.v. animatie
       (`Views.cpp` regel 272). Verplicht volgens opgave.
 - [ ] Unit tests voor de logica (World, Entities, Score, Bomb-explosie-logica)
+- [ ] Levels 2, 2de sletel ook -> "You Win" + animatie
 - [ ] Bot AI daadwerkelijk aanzetten/testen in-game — check of `updateBotAI`,
       pathfinding en escape-logic ook echt actief zijn en getest
 - [ ] `.hpp` → `.h` hernoemen waar nog nodig (comments verwijzen soms nog naar `.hpp`)
