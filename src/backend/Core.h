@@ -1,7 +1,7 @@
 #pragma once
-#include <random>
-#include <chrono>
 #include <algorithm>
+#include <chrono>
+#include <random>
 
 // ============================================================
 // Core.hpp
@@ -24,7 +24,11 @@ struct Vec2 {
     Vec2 operator+(const Vec2& o) const { return Vec2(x + o.x, y + o.y); }
     Vec2 operator-(const Vec2& o) const { return Vec2(x - o.x, y - o.y); }
     Vec2 operator*(double s) const { return Vec2(x * s, y * s); }
-    Vec2& operator+=(const Vec2& o) { x += o.x; y += o.y; return *this; }
+    Vec2& operator+=(const Vec2& o) {
+        x += o.x;
+        y += o.y;
+        return *this;
+    }
 };
 
 // Projecteert genormaliseerde wereldcoördinaten ([-1,1] x [-1,1]) naar
@@ -32,8 +36,7 @@ struct Vec2 {
 // zonder SFML-utilities, zodat de logic-library SFML-onafhankelijk blijft.
 class Camera {
 public:
-    Camera(double windowWidth, double windowHeight)
-        : width_(windowWidth), height_(windowHeight) {}
+    Camera(double windowWidth, double windowHeight) : width_(windowWidth), height_(windowHeight) {}
 
     Vec2 worldToScreen(const Vec2& worldPos) const {
         double px = (worldPos.x + 1.0) / 2.0 * width_;
@@ -57,8 +60,8 @@ class Random {
 public:
     static Random& instance();
 
-    int getInt(int min, int max);   // inclusief bereik
-    double getDouble01();           // [0, 1)
+    int getInt(int min, int max); // inclusief bereik
+    double getDouble01();         // [0, 1)
 
     Random(const Random&) = delete;
     Random& operator=(const Random&) = delete;
@@ -75,9 +78,9 @@ class Stopwatch {
 public:
     static Stopwatch& instance();
 
-    void tick();                  // één keer per frame aanroepen
-    double getDeltaTime() const;  // seconden sinds vorige tick
-    double getTotalTime() const;  // seconden sinds het spel gestart is
+    void tick();                 // één keer per frame aanroepen
+    double getDeltaTime() const; // seconden sinds vorige tick
+    double getTotalTime() const; // seconden sinds het spel gestart is
 
     Stopwatch(const Stopwatch&) = delete;
     Stopwatch& operator=(const Stopwatch&) = delete;

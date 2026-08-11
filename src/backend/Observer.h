@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <memory>
+#include <vector>
 
 // ============================================================
 // Observer.hpp
@@ -47,12 +47,10 @@ class Subject {
 public:
     virtual ~Subject() = default;
 
-    void attach(const std::shared_ptr<Observer>& observer) {
-        observers_.push_back(observer);
-    }
+    void attach(const std::shared_ptr<Observer>& observer) { observers_.push_back(observer); }
 
     void notify(const Event& event) {
-        for (auto it = observers_.begin(); it != observers_.end(); ) {
+        for (auto it = observers_.begin(); it != observers_.end();) {
             if (auto obs = it->lock()) {
                 obs->onNotify(event);
                 ++it;

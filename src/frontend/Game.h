@@ -1,8 +1,8 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "World.h"
-#include "Score.h"
 #include "ConcreteFactory.h"
+#include "Score.h"
+#include "World.h"
+#include <SFML/Graphics.hpp>
 #include <memory>
 
 // ============================================================
@@ -16,7 +16,6 @@ class Game {
 public:
     Game();
     void run();
-
 
 private:
     enum class State { StartScreen, Playing, GameOver };

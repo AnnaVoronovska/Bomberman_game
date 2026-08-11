@@ -1,6 +1,6 @@
 #include "Game.h"
-#include <iostream>
 #include <exception>
+#include <iostream>
 
 // ============================================================
 // main.cpp

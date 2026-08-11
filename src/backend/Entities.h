@@ -118,12 +118,14 @@ public:
     int getBombsInPlay() const { return bombsInPlay_; }
     void onBombPlaced() {
         ++bombsInPlay_;
-        if (isBot_) bombCooldownRemaining_ = BOT_BOMB_COOLDOWN_SECONDS;
+        if (isBot_)
+            bombCooldownRemaining_ = BOT_BOMB_COOLDOWN_SECONDS;
     }
-    void onBombResolved() { if (bombsInPlay_ > 0) --bombsInPlay_; }
-    bool canPlaceBomb() const {
-        return alive_ && bombsInPlay_ < maxBombs_ && bombCooldownRemaining_ <= 0.0;
+    void onBombResolved() {
+        if (bombsInPlay_ > 0)
+            --bombsInPlay_;
     }
+    bool canPlaceBomb() const { return alive_ && bombsInPlay_ < maxBombs_ && bombCooldownRemaining_ <= 0.0; }
 
     void applyPowerUp(PowerUpType type);
 
@@ -146,7 +148,7 @@ public:
 
 private:
     Direction direction_ = Direction::Down;
-    double speed_ = 0.5;      // wereld-eenheden per seconde
+    double speed_ = 0.5; // wereld-eenheden per seconde
     int maxBombs_ = 1;
     int bombRadius_ = 1;
     int bombsInPlay_ = 0;

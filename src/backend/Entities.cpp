@@ -5,8 +5,7 @@ namespace bomberman {
 
 // ---------------- EntityModel ----------------
 
-EntityModel::EntityModel(Vec2 position, Vec2 size)
-    : position_(position), size_(size) {}
+EntityModel::EntityModel(Vec2 position, Vec2 size) : position_(position), size_(size) {}
 
 bool EntityModel::intersects(const EntityModel& other) const {
     double aLeft = position_.x - size_.x / 2.0;
@@ -29,8 +28,7 @@ void EntityModel::markForRemoval() {
 
 // ---------------- Wall ----------------
 
-Wall::Wall(Vec2 position, Vec2 size, bool destructible)
-    : EntityModel(position, size), destructible_(destructible) {}
+Wall::Wall(Vec2 position, Vec2 size, bool destructible) : EntityModel(position, size), destructible_(destructible) {}
 
 void Wall::destroy() {
     notify(Event{EventType::BlockDestroyed, this});
@@ -39,8 +37,7 @@ void Wall::destroy() {
 
 // ---------------- PowerUp ----------------
 
-PowerUp::PowerUp(Vec2 position, Vec2 size, PowerUpType type)
-    : EntityModel(position, size), type_(type) {}
+PowerUp::PowerUp(Vec2 position, Vec2 size, PowerUpType type) : EntityModel(position, size), type_(type) {}
 
 void PowerUp::collect() {
     notify(Event{EventType::PowerUpCollected, this});
@@ -49,8 +46,7 @@ void PowerUp::collect() {
 
 // ---------------- Door ----------------
 
-Door::Door(Vec2 position, Vec2 size)
-    : EntityModel(position, size) {}
+Door::Door(Vec2 position, Vec2 size) : EntityModel(position, size) {}
 
 // ---------------- Bomb ----------------
 
@@ -58,7 +54,8 @@ Bomb::Bomb(Vec2 position, Vec2 size, int radius, std::weak_ptr<Character> owner,
     : EntityModel(position, size), radius_(radius), fuseTime_(fuseTime), owner_(owner) {}
 
 void Bomb::update(double deltaTime) {
-    if (exploded_) return;
+    if (exploded_)
+        return;
     timer_ += deltaTime;
     if (timer_ >= fuseTime_) {
         explode();
@@ -66,32 +63,35 @@ void Bomb::update(double deltaTime) {
 }
 
 void Bomb::explode() {
-    if (exploded_) return;
+    if (exploded_)
+        return;
     exploded_ = true;
     notify(Event{EventType::BombExploded, this});
     markForRemoval();
 }
 
 bool Bomb::consumeDamageFlag() {
-    if (damageApplied_) return false;
+    if (damageApplied_)
+        return false;
     damageApplied_ = true;
     return true;
 }
 
 // ---------------- Character ----------------
 
-Character::Character(Vec2 position, Vec2 size, bool isBot)
-    : EntityModel(position, size), isBot_(isBot) {
+Character::Character(Vec2 position, Vec2 size, bool isBot) : EntityModel(position, size), isBot_(isBot) {
     // Bots bewegen trager dan de speler (was voorheen exact dezelfde
     // speed_ als de speler, wat ze onnatuurlijk snel liet aanvoelen).
-    if (isBot_) speed_ = 0.22; // ~55% trager dan de speler-basissnelheid (0.5)
+    if (isBot_)
+        speed_ = 0.22; // ~55% trager dan de speler-basissnelheid (0.5)
 
     // Vijanden sterven in klassieke Bomberman altijd in ÉÉN treffer, in
     // tegenstelling tot de speler die meerdere levens heeft. Voorheen
     // gebruikten bots hetzelfde lives_ = 3 als de speler, waardoor een bom
     // die een vijand "letterlijk ernaast" raakte hem soms NIET doodde (hij
     // ging gewoon van 3 naar 2 levens) - dat leek dan een bug/inconsistentie.
-    if (isBot_) lives_ = 1;
+    if (isBot_)
+        lives_ = 1;
 }
 
 void Character::update(double deltaTime) {
@@ -99,38 +99,62 @@ void Character::update(double deltaTime) {
     // muren en bommen controleren voor de positie effectief verandert.
     if (invulnerableTimer_ > 0.0) {
         invulnerableTimer_ -= deltaTime;
-        if (invulnerableTimer_ < 0.0) invulnerableTimer_ = 0.0;
+        if (invulnerableTimer_ < 0.0)
+            invulnerableTimer_ = 0.0;
     }
     if (bombCooldownRemaining_ > 0.0) {
         bombCooldownRemaining_ -= deltaTime;
-        if (bombCooldownRemaining_ < 0.0) bombCooldownRemaining_ = 0.0;
+        if (bombCooldownRemaining_ < 0.0)
+            bombCooldownRemaining_ = 0.0;
     }
 }
 
 void Character::applyPowerUp(PowerUpType type) {
     switch (type) {
-        case PowerUpType::Fire:      ++bombRadius_; break;
-        case PowerUpType::ExtraBomb: ++maxBombs_;   break;
-        case PowerUpType::Skates:    speed_ += 0.15; break;
-        case PowerUpType::Poison:    speed_ = std::max(0.1, speed_ - 0.1); break;
-        case PowerUpType::Star:      /* score-bonus wordt via Score/Event afgehandeld */ break;
-        case PowerUpType::Shield:    bombRadius_ += 2; break;
-        case PowerUpType::Curse:     maxBombs_ = std::max(1, maxBombs_ - 1); break;
-        case PowerUpType::Slow:      speed_ = std::max(0.1, speed_ - 0.15); break;
-        case PowerUpType::Freeze:    speed_ += 0.25; break;
-        case PowerUpType::Skull:     bombRadius_ = std::max(1, bombRadius_ - 1); break;
+    case PowerUpType::Fire:
+        ++bombRadius_;
+        break;
+    case PowerUpType::ExtraBomb:
+        ++maxBombs_;
+        break;
+    case PowerUpType::Skates:
+        speed_ += 0.15;
+        break;
+    case PowerUpType::Poison:
+        speed_ = std::max(0.1, speed_ - 0.1);
+        break;
+    case PowerUpType::Star: /* score-bonus wordt via Score/Event afgehandeld */
+        break;
+    case PowerUpType::Shield:
+        bombRadius_ += 2;
+        break;
+    case PowerUpType::Curse:
+        maxBombs_ = std::max(1, maxBombs_ - 1);
+        break;
+    case PowerUpType::Slow:
+        speed_ = std::max(0.1, speed_ - 0.15);
+        break;
+    case PowerUpType::Freeze:
+        speed_ += 0.25;
+        break;
+    case PowerUpType::Skull:
+        bombRadius_ = std::max(1, bombRadius_ - 1);
+        break;
     }
 }
 
 void Character::die() {
-    if (!alive_) return;
+    if (!alive_)
+        return;
     alive_ = false;
     notify(Event{EventType::Died, this});
 }
 
 void Character::loseLife() {
-    if (!alive_ || isInvulnerable()) return;
-    if (lives_ > 0) --lives_;
+    if (!alive_ || isInvulnerable())
+        return;
+    if (lives_ > 0)
+        --lives_;
     notify(Event{EventType::Damaged, this});
     if (lives_ <= 0) {
         die();

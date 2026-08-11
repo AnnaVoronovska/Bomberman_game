@@ -40,8 +40,7 @@ private:
 
 class PowerUpView : public EntityView {
 public:
-    PowerUpView(std::weak_ptr<bomberman::PowerUp> model, const bomberman::Camera& camera,
-                const sf::Texture& texture);
+    PowerUpView(std::weak_ptr<bomberman::PowerUp> model, const bomberman::Camera& camera, const sf::Texture& texture);
     void draw(sf::RenderWindow& window) override;
 
 private:

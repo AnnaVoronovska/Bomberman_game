@@ -1,8 +1,8 @@
 #pragma once
 #include "AbstractFactory.h"
 #include "Views.h"
-#include <vector>
 #include <memory>
+#include <vector>
 
 // ============================================================
 // ConcreteFactory.hpp
@@ -19,7 +19,7 @@ public:
     std::shared_ptr<bomberman::Character> createCharacter(bomberman::Vec2 position, bool isBot) override;
     std::shared_ptr<bomberman::Wall> createWall(bomberman::Vec2 position, bool destructible) override;
     std::shared_ptr<bomberman::Bomb> createBomb(bomberman::Vec2 position, int radius,
-                                                 std::weak_ptr<bomberman::Character> owner) override;
+                                                std::weak_ptr<bomberman::Character> owner) override;
     std::shared_ptr<bomberman::PowerUp> createPowerUp(bomberman::Vec2 position, bomberman::PowerUpType type) override;
     std::shared_ptr<bomberman::Door> createDoor(bomberman::Vec2 position) override;
 

@@ -51,7 +51,8 @@ std::shared_ptr<Bomb> ConcreteFactory::createBomb(Vec2 position, int radius, std
 }
 
 std::shared_ptr<PowerUp> ConcreteFactory::createPowerUp(Vec2 position, PowerUpType type) {
-    auto model = std::make_shared<PowerUp>(position, Vec2(0.09, 0.09), type); // iets groter dan voorheen (0.06), zodat het icoon goed zichtbaar is
+    auto model = std::make_shared<PowerUp>(position, Vec2(0.09, 0.09),
+                                           type); // iets groter dan voorheen (0.06), zodat het icoon goed zichtbaar is
     auto view = std::make_shared<PowerUpView>(model, camera_, texture_);
     model->attach(view);
     views_.push_back(view);
@@ -68,11 +69,13 @@ std::shared_ptr<Door> ConcreteFactory::createDoor(Vec2 position) {
 
 void ConcreteFactory::drawAll(sf::RenderWindow& window) {
     for (auto& v : views_) {
-        if (!v->isExpired()) v->draw(window);
+        if (!v->isExpired())
+            v->draw(window);
     }
 }
 
 void ConcreteFactory::removeExpiredViews() {
     views_.erase(std::remove_if(views_.begin(), views_.end(),
-        [](const std::shared_ptr<EntityView>& v) { return v->isExpired(); }), views_.end());
+                                [](const std::shared_ptr<EntityView>& v) { return v->isExpired(); }),
+                 views_.end());
 }

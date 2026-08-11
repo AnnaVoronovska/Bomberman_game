@@ -1,16 +1,16 @@
 #include "Views.h"
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 
 using namespace bomberman;
 
 // ---------------- EntityView (basis) ----------------
 
-EntityView::EntityView(std::weak_ptr<EntityModel> model, const Camera& camera)
-    : model_(model), camera_(camera) {}
+EntityView::EntityView(std::weak_ptr<EntityModel> model, const Camera& camera) : model_(model), camera_(camera) {}
 
 void EntityView::onNotify(const Event& e) {
-    if (e.type == EventType::Removed) removed_ = true;
+    if (e.type == EventType::Removed)
+        removed_ = true;
 }
 
 bool EntityView::isExpired() const { return removed_ || model_.expired(); }
@@ -22,7 +22,8 @@ WallView::WallView(std::weak_ptr<Wall> model, const Camera& camera, const sf::Te
 
 void WallView::draw(sf::RenderWindow& window) {
     auto w = wall_.lock();
-    if (!w) return;
+    if (!w)
+        return;
 
     Vec2 p = camera_.worldToScreen(w->getPosition());
     Vec2 s = camera_.worldToScreenSize(w->getSize());
@@ -112,7 +113,8 @@ PowerUpView::PowerUpView(std::weak_ptr<PowerUp> model, const Camera& camera, con
 
 void PowerUpView::draw(sf::RenderWindow& window) {
     auto p = powerUp_.lock();
-    if (!p) return;
+    if (!p)
+        return;
 
     Vec2 pos = camera_.worldToScreen(p->getPosition());
     Vec2 s = camera_.worldToScreenSize(p->getSize());
@@ -120,16 +122,46 @@ void PowerUpView::draw(sf::RenderWindow& window) {
     // Coördinaten van de iconen in de spritesheet (rij, kolom van 32x32-vakjes).
     int col = 0, row = 0;
     switch (p->getType()) {
-        case PowerUpType::Fire:      col = 0; row = 22; break; // vuur-icoon
-        case PowerUpType::ExtraBomb: col = 1; row = 22; break; // bom-icoon
-        case PowerUpType::Skates:    col = 2; row = 22; break; // skates-icoon
-        case PowerUpType::Poison:    col = 3; row = 22; break; // paars flesje
-        case PowerUpType::Star:      col = 4; row = 22; break; // ster
-        case PowerUpType::Shield:    col = 0; row = 23; break; // schild
-        case PowerUpType::Curse:     col = 2; row = 23; break; // rood beestje
-        case PowerUpType::Slow:      col = 3; row = 23; break; // zwart stekelig
-        case PowerUpType::Freeze:    col = 2; row = 24; break; // blauwe vlam
-        case PowerUpType::Skull:     col = 4; row = 24; break; // schedel
+    case PowerUpType::Fire:
+        col = 0;
+        row = 22;
+        break; // vuur-icoon
+    case PowerUpType::ExtraBomb:
+        col = 1;
+        row = 22;
+        break; // bom-icoon
+    case PowerUpType::Skates:
+        col = 2;
+        row = 22;
+        break; // skates-icoon
+    case PowerUpType::Poison:
+        col = 3;
+        row = 22;
+        break; // paars flesje
+    case PowerUpType::Star:
+        col = 4;
+        row = 22;
+        break; // ster
+    case PowerUpType::Shield:
+        col = 0;
+        row = 23;
+        break; // schild
+    case PowerUpType::Curse:
+        col = 2;
+        row = 23;
+        break; // rood beestje
+    case PowerUpType::Slow:
+        col = 3;
+        row = 23;
+        break; // zwart stekelig
+    case PowerUpType::Freeze:
+        col = 2;
+        row = 24;
+        break; // blauwe vlam
+    case PowerUpType::Skull:
+        col = 4;
+        row = 24;
+        break; // schedel
     }
 
     sf::Sprite sprite;
@@ -145,12 +177,12 @@ void PowerUpView::draw(sf::RenderWindow& window) {
 
 // ---------------- DoorView ----------------
 
-DoorView::DoorView(std::weak_ptr<Door> model, const Camera& camera)
-    : EntityView(model, camera), door_(model) {}
+DoorView::DoorView(std::weak_ptr<Door> model, const Camera& camera) : EntityView(model, camera), door_(model) {}
 
 void DoorView::draw(sf::RenderWindow& window) {
     auto d = door_.lock();
-    if (!d) return;
+    if (!d)
+        return;
 
     Vec2 p = camera_.worldToScreen(d->getPosition());
     Vec2 s = camera_.worldToScreenSize(d->getSize());
@@ -213,7 +245,8 @@ void BombView::onNotify(const Event& e) {
 
 bool BombView::isExpired() const {
     constexpr double EXPLODE_ANIM_TIME = 0.35;
-    if (exploding_) return explodeAnimTimer_ >= EXPLODE_ANIM_TIME;
+    if (exploding_)
+        return explodeAnimTimer_ >= EXPLODE_ANIM_TIME;
     return EntityView::isExpired();
 }
 
@@ -238,7 +271,8 @@ void BombView::draw(sf::RenderWindow& window) {
     }
 
     auto b = bomb_.lock();
-    if (!b) return;
+    if (!b)
+        return;
 
     Vec2 pos = camera_.worldToScreen(b->getPosition());
     Vec2 s = camera_.worldToScreenSize(b->getSize());
@@ -263,20 +297,22 @@ void BombView::draw(sf::RenderWindow& window) {
 
 // ---------------- CharacterView ----------------
 
-CharacterView::CharacterView(std::weak_ptr<Character> model, const Camera& camera,
-                              const sf::Texture& texture, int rowBase, int colBase)
+CharacterView::CharacterView(std::weak_ptr<Character> model, const Camera& camera, const sf::Texture& texture,
+                             int rowBase, int colBase)
     : EntityView(model, camera), character_(model), texture_(&texture), rowBase_(rowBase), colBase_(colBase) {}
 
 void CharacterView::draw(sf::RenderWindow& window) {
     auto c = character_.lock();
-    if (!c || !c->isAlive()) return;
+    if (!c || !c->isAlive())
+        return;
 
     Vec2 pos = camera_.worldToScreen(c->getPosition());
     Vec2 s = camera_.worldToScreenSize(c->getSize());
 
     Direction dir = c->getDirection();
     bool moving = (dir != Direction::None);
-    if (moving) lastDirection_ = dir; // laatste bewogen richting onthouden voor idle-pose
+    if (moving)
+        lastDirection_ = dir; // laatste bewogen richting onthouden voor idle-pose
 
     // Animatie voortgang: enkel de frame doorschuiven als het personage effectief beweegt.
     constexpr double FRAME_TIME = 0.12; // seconden per animatie-frame
@@ -295,11 +331,22 @@ void CharacterView::draw(sf::RenderWindow& window) {
     int rowOffset = 0;
     bool flip = false;
     switch (lastDirection_) {
-        case Direction::Down:  rowOffset = 0; break;
-        case Direction::Up:    rowOffset = 1; break;
-        case Direction::Left:  rowOffset = 2; break;
-        case Direction::Right: rowOffset = 2; flip = true; break;
-        default:                rowOffset = 0; break;
+    case Direction::Down:
+        rowOffset = 0;
+        break;
+    case Direction::Up:
+        rowOffset = 1;
+        break;
+    case Direction::Left:
+        rowOffset = 2;
+        break;
+    case Direction::Right:
+        rowOffset = 2;
+        flip = true;
+        break;
+    default:
+        rowOffset = 0;
+        break;
     }
     int row = rowBase_ + rowOffset;
     int col = colBase_ + frame_;
@@ -312,7 +359,8 @@ void CharacterView::draw(sf::RenderWindow& window) {
 
     float scaleX = static_cast<float>(s.x) / 32.f;
     float scaleY = static_cast<float>(s.y) / 32.f;
-    if (flip) scaleX = -scaleX; // spiegel horizontaal voor "naar rechts lopen"
+    if (flip)
+        scaleX = -scaleX; // spiegel horizontaal voor "naar rechts lopen"
     sprite.setScale(scaleX, scaleY);
 
     window.draw(sprite);

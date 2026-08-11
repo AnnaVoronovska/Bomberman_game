@@ -1,12 +1,12 @@
 #pragma once
-#include "Core.h"
-#include "Observer.h"
-#include "Entities.h"
 #include "AbstractFactory.h"
+#include "Core.h"
+#include "Entities.h"
+#include "Observer.h"
 #include "Score.h"
-#include <vector>
 #include <memory>
 #include <utility>
+#include <vector>
 
 // ============================================================
 // World.hpp
@@ -26,7 +26,7 @@ class World : public Subject {
 public:
     World(AbstractFactory& factory, Score& score);
 
-    void generateArena();          // bouwt de arena volgens de klassieke layout
+    void generateArena(); // bouwt de arena volgens de klassieke layout
     void update(double deltaTime);
 
     bool isGameOver() const { return gameOver_; }
@@ -53,15 +53,14 @@ private:
     Wall* wallAtCell(int col, int row) const;
     bool isBombAt(int col, int row) const;
 
-    void buildArena();              // muren opnieuw opbouwen + nieuwe verborgen deur-tegel kiezen
-    void advanceToNextLevel();      // speler bereikt de deur: nieuwe stage, zelfde speler/score
+    void buildArena();         // muren opnieuw opbouwen + nieuwe verborgen deur-tegel kiezen
+    void advanceToNextLevel(); // speler bereikt de deur: nieuwe stage, zelfde speler/score
 
     void tryMoveCharacter(Character& c, double deltaTime);
     void placeBomb(const std::shared_ptr<Character>& owner);
     void updateBombs(double deltaTime);
     void explodeBomb(Bomb& bomb);
-    void spreadExplosion(int col, int row, int dcol, int drow, int radius,
-                          std::vector<std::pair<int, int>>& affected);
+    void spreadExplosion(int col, int row, int dcol, int drow, int radius, std::vector<std::pair<int, int>>& affected);
     void applyExplosionDamage(const std::vector<std::pair<int, int>>& tiles, Bomb& source);
     void maybeSpawnPowerUp(int col, int row);
     void updateBotAI(const std::shared_ptr<Character>& bot, double deltaTime);
@@ -75,7 +74,7 @@ private:
     std::vector<std::shared_ptr<Bomb>> bombs_;
     std::vector<std::shared_ptr<PowerUp>> powerUps_;
     std::vector<std::shared_ptr<Character>> characters_; // [0] = Player, rest = bots
-    std::shared_ptr<Door> door_; // pas aangemaakt zodra de muur die hem verbergt ontploft
+    std::shared_ptr<Door> door_;                         // pas aangemaakt zodra de muur die hem verbergt ontploft
 
     std::shared_ptr<Character> player_;
 
@@ -92,18 +91,16 @@ private:
     int doorRow_ = -1;
 
     void collectDangerTiles(std::vector<std::vector<bool>>& danger) const;
-    bool findEscapeDirection(int fromCol, int fromRow,
-                              const std::vector<std::vector<bool>>& danger,
-                              Direction& outDir) const;
+    bool findEscapeDirection(int fromCol, int fromRow, const std::vector<std::vector<bool>>& danger,
+                             Direction& outDir) const;
 
     // Pathfinding naar een willekeurig doel (power-up, muur om te bombarderen, ...).
     // 'danger' wordt behandeld als onbegaanbaar, net als muren/bommen, zodat een
     // bot NOOIT via een actieve gevarenzone naar zijn doel loopt (dat veroorzaakte
     // de bug waarbij een bot na het vluchten meteen terug de gevarenzone in werd
     // getrokken door prioriteit 2/4, bleef "pendelen", en soms in zijn eigen bom stierf).
-    bool findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow,
-                           bool targetAdjacent, const std::vector<std::vector<bool>>& danger,
-                           Direction& outDir) const;
+    bool findPathDirection(int fromCol, int fromRow, int targetCol, int targetRow, bool targetAdjacent,
+                           const std::vector<std::vector<bool>>& danger, Direction& outDir) const;
 };
 
 } // namespace bomberman
