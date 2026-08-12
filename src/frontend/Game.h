@@ -8,7 +8,7 @@
 #include <memory>
 
 // ============================================================
-// Game.hpp
+// Game.h
 // Representatie-laag: bezit het SFML-venster, draait de hoofdlus en
 // vertaalt toetsenbordinput naar acties in de World. Bevat zelf GEEN
 // spelregels - dat hoort allemaal bij World.
@@ -24,7 +24,7 @@ private:
 
     void processInput();
     void update(double dt);
-    void render();
+    void render(double dt);
     void startNewGame();
 
     sf::RenderWindow window_;
@@ -42,4 +42,9 @@ private:
     // "STAGE 1"-banner die kort getoond wordt net na het starten van een level.
     double stageBannerTimer_ = 0.0;
     static constexpr double STAGE_BANNER_DURATION = 1.6;
+
+    // F1 toggelt een debug-overlay die via het Visitor-patroon
+    // (World::describeEntitiesAt) toont welke entiteiten er op de cel van de
+    // speler staan. Puur ontwikkelaars-hulpmiddel, geen invloed op gameplay.
+    bool showDebugOverlay_ = false;
 };

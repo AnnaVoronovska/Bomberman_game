@@ -9,10 +9,10 @@
 - [x] Levels 2, 2de sletel ook -> "You Win" + animatie
 - [x] Bot AI daadwerkelijk aanzetten/testen in-game — check of `updateBotAI`,
       pathfinding en escape-logic ook echt actief zijn en getest
-- [ ] `.hpp` → `.h` hernoemen waar nog nodig (comments verwijzen soms nog naar `.hpp`)
+- [x] `.hpp` → `.h` hernoemen waar nog nodig (comments verwijzen soms nog naar `.hpp`)
 - [ ] Class-diagrammen maken (zoals figuur 3 in de opgave) voor je verslag
 - [ ] Verslag schrijven
-- [ ] AI-gegenereerde code opschonen: comments nalopen, overbodige AI-stijl-comments
+- [x] AI-gegenereerde code opschonen: comments nalopen, overbodige AI-stijl-comments
       verwijderen, zorg dat je alles kan uitleggen (telt zwaar mee, 40% verdediging!)
 - [ ] Opdracht herlezen en zien of ik iets gemist heb
 

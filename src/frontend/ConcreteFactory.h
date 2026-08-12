@@ -6,7 +6,7 @@
 #include <vector>
 
 // ============================================================
-// ConcreteFactory.hpp
+// ConcreteFactory.h
 // Concrete Factory: maakt logic-entities aan EN koppelt er meteen (via
 // het Observer-patroon) de juiste SFML-View én de AudioManager aan. World
 // gebruikt deze klasse enkel via de AbstractFactory-interface en weet dus
@@ -25,7 +25,7 @@ public:
     std::shared_ptr<bomberman::PowerUp> createPowerUp(bomberman::Vec2 position, bomberman::PowerUpType type) override;
     std::shared_ptr<bomberman::Door> createDoor(bomberman::Vec2 position) override;
 
-    void drawAll(sf::RenderWindow& window);
+    void drawAll(sf::RenderWindow& window, double deltaTime);
     void removeExpiredViews();
 
 private:

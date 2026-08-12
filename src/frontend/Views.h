@@ -6,7 +6,7 @@
 #include <memory>
 
 // ============================================================
-// Views.hpp
+// Views.h
 // View-deel van MVC. Elke EntityView abonneert zich (Observer) op zijn
 // bijhorend Model, en weet hoe hij zichzelf met SFML moet tekenen.
 // Simpele gekleurde vormen worden gebruikt als "sprite" - zie README.md
@@ -19,7 +19,7 @@ public:
     virtual ~EntityView() = default;
 
     void onNotify(const bomberman::Event& event) override;
-    virtual void draw(sf::RenderWindow& window) = 0;
+    virtual void draw(sf::RenderWindow& window, double deltaTime) = 0;
     virtual bool isExpired() const;
 
 protected:
@@ -31,7 +31,7 @@ protected:
 class WallView : public EntityView {
 public:
     WallView(std::weak_ptr<bomberman::Wall> model, const bomberman::Camera& camera, const sf::Texture& texture);
-    void draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window, double deltaTime) override;
 
 private:
     std::weak_ptr<bomberman::Wall> wall_;
@@ -41,7 +41,7 @@ private:
 class PowerUpView : public EntityView {
 public:
     PowerUpView(std::weak_ptr<bomberman::PowerUp> model, const bomberman::Camera& camera, const sf::Texture& texture);
-    void draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window, double deltaTime) override;
 
 private:
     std::weak_ptr<bomberman::PowerUp> powerUp_;
@@ -51,7 +51,7 @@ private:
 class DoorView : public EntityView {
 public:
     DoorView(std::weak_ptr<bomberman::Door> model, const bomberman::Camera& camera);
-    void draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window, double deltaTime) override;
 
 private:
     std::weak_ptr<bomberman::Door> door_;
@@ -62,7 +62,7 @@ class BombView : public EntityView {
 public:
     BombView(std::weak_ptr<bomberman::Bomb> model, const bomberman::Camera& camera, const sf::Texture& texture);
     void onNotify(const bomberman::Event& event) override;
-    void draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window, double deltaTime) override;
     bool isExpired() const override;
 
 private:
@@ -83,7 +83,7 @@ public:
     CharacterView(std::weak_ptr<bomberman::Character> model, const bomberman::Camera& camera,
                   const sf::Texture& texture, int rowBase, int colBase = 0);
     void onNotify(const bomberman::Event& event) override;
-    void draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window, double deltaTime) override;
 
 private:
     std::weak_ptr<bomberman::Character> character_;

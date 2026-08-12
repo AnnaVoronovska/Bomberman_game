@@ -5,7 +5,7 @@
 #include <memory>
 
 // ============================================================
-// Entities.hpp
+// Entities.h
 // Alle spel-entiteiten (Model-deel van MVC). Pure logica: geen SFML,
 // geen tekencode. Elke klasse erft van EntityModel (en dus van Subject),
 // zodat Views zich er via het Observer-patroon op kunnen abonneren.

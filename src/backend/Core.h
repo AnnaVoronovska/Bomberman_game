@@ -4,7 +4,7 @@
 #include <random>
 
 // ============================================================
-// Core.hpp
+// Core.h
 // Kleine, herbruikbare bouwstenen die de rest van de logic-library
 // gebruikt: een 2D vector, een projectie-camera, en twee Singletons
 // (Random en Stopwatch). Dit bestand bevat GEEN SFML: de logic-library

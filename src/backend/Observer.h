@@ -3,7 +3,7 @@
 #include <vector>
 
 // ============================================================
-// Observer.hpp
+// Observer.h
 // Implementatie van het Observer design pattern. EntityModel (elk
 // spel-object) en World erven van Subject, en sturen Events naar al hun
 // Observers (bv. Views in de representatie-laag, of de Score-klasse).

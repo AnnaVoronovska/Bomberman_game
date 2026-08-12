@@ -2,7 +2,7 @@
 #include <string>
 
 // ============================================================
-// Visitor.hpp
+// Visitor.h
 // Visitor design pattern: laat je een nieuwe operatie op de hele
 // EntityModel-hiërarchie (Wall, PowerUp, Door, Bomb, Character) toevoegen
 // zonder die klassen zelf te moeten aanpassen. Elke concrete visitor

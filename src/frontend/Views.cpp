@@ -20,7 +20,7 @@ bool EntityView::isExpired() const { return removed_ || model_.expired(); }
 WallView::WallView(std::weak_ptr<Wall> model, const Camera& camera, const sf::Texture& texture)
     : EntityView(model, camera), wall_(model), texture_(&texture) {}
 
-void WallView::draw(sf::RenderWindow& window) {
+void WallView::draw(sf::RenderWindow& window, double deltaTime) {
     auto w = wall_.lock();
     if (!w)
         return;
@@ -111,7 +111,7 @@ void WallView::draw(sf::RenderWindow& window) {
 PowerUpView::PowerUpView(std::weak_ptr<PowerUp> model, const Camera& camera, const sf::Texture& texture)
     : EntityView(model, camera), powerUp_(model), texture_(&texture) {}
 
-void PowerUpView::draw(sf::RenderWindow& window) {
+void PowerUpView::draw(sf::RenderWindow& window, double deltaTime) {
     auto p = powerUp_.lock();
     if (!p)
         return;
@@ -179,7 +179,7 @@ void PowerUpView::draw(sf::RenderWindow& window) {
 
 DoorView::DoorView(std::weak_ptr<Door> model, const Camera& camera) : EntityView(model, camera), door_(model) {}
 
-void DoorView::draw(sf::RenderWindow& window) {
+void DoorView::draw(sf::RenderWindow& window, double deltaTime) {
     auto d = door_.lock();
     if (!d)
         return;
@@ -193,7 +193,7 @@ void DoorView::draw(sf::RenderWindow& window) {
 
     // Zachte gouden gloed erachter, zodat de deur meteen opvalt tussen de
     // muren/vloertegels wanneer ze net vrijkomt.
-    pulse_ += (1.0 / 60.0) * 3.0;
+    pulse_ += deltaTime * 3.0;
     float glowAlpha = 90.f + 50.f * static_cast<float>(std::sin(pulse_));
     sf::RectangleShape glow(sf::Vector2f(w_ * 1.25f, h_ * 1.25f));
     glow.setPosition(x - w_ * 0.125f, y - h_ * 0.125f);
@@ -250,12 +250,12 @@ bool BombView::isExpired() const {
     return EntityView::isExpired();
 }
 
-void BombView::draw(sf::RenderWindow& window) {
+void BombView::draw(sf::RenderWindow& window, double deltaTime) {
     constexpr double EXPLODE_ANIM_TIME = 0.35;
 
     if (exploding_) {
         // ---- Ontploffings-animatie: 4 groeiende burst-frames uit de spritesheet ----
-        explodeAnimTimer_ += 1.0 / 60.0;
+        explodeAnimTimer_ += deltaTime;
         int frame = std::min(3, static_cast<int>(explodeAnimTimer_ / (EXPLODE_ANIM_TIME / 4.0)));
 
         sf::Sprite sprite;
@@ -282,7 +282,7 @@ void BombView::draw(sf::RenderWindow& window) {
     // ---- Tikkende bom: vaste sprite, met een simpele "ademende" puls i.p.v. frame-swap.
     // Puls versnelt naarmate de lont korter wordt.
     double urgency = b->getFuseTime() > 0.0 ? (b->getTimer() / b->getFuseTime()) : 0.0; // 0..1
-    pulse_ += (1.0 / 60.0) * (4.0 + urgency * 8.0);
+    pulse_ += deltaTime * (4.0 + urgency * 8.0);
     float breathe = 1.0f + 0.12f * static_cast<float>(std::sin(pulse_));
 
     sf::Sprite sprite;
@@ -312,7 +312,7 @@ void CharacterView::onNotify(const Event& e) {
     EntityView::onNotify(e); // laat de basisklasse 'Removed' nog steeds verwerken
 }
 
-void CharacterView::draw(sf::RenderWindow& window) {
+void CharacterView::draw(sf::RenderWindow& window, double deltaTime) {
     auto c = character_.lock();
     if (!c)
         return;
@@ -325,7 +325,7 @@ void CharacterView::draw(sf::RenderWindow& window) {
     // het Model zelf wordt niet uit World verwijderd bij overlijden. ----
     constexpr double DEATH_ANIM_TIME = 0.7; // seconden
     if (dying_) {
-        deathAnimTimer_ += 1.0 / 60.0;
+        deathAnimTimer_ += deltaTime;
         double t = std::min(1.0, deathAnimTimer_ / DEATH_ANIM_TIME); // 0..1 voortgang
 
         int row = rowBase_;    // "down"-pose als basis voor de death-animatie
@@ -357,7 +357,7 @@ void CharacterView::draw(sf::RenderWindow& window) {
     if (won_) {
         constexpr double WIN_FRAME_TIME = 0.15;
         constexpr int WIN_FRAME_COUNT = 4;
-        winAnimTimer_ += 1.0 / 60.0;
+        winAnimTimer_ += deltaTime;
         if (winAnimTimer_ >= WIN_FRAME_TIME) {
             winAnimTimer_ = 0.0;
             frame_ = (frame_ + 1) % WIN_FRAME_COUNT;
@@ -388,7 +388,7 @@ void CharacterView::draw(sf::RenderWindow& window) {
     constexpr double FRAME_TIME = 0.12; // seconden per animatie-frame
     constexpr int FRAME_COUNT = 4;
     if (moving) {
-        animTimer_ += 1.0 / 60.0; // grove tick-benadering; geen deltaTime beschikbaar in draw()
+        animTimer_ += deltaTime; // echte deltaTime, dus animatiesnelheid is onafhankelijk van de framerate
         if (animTimer_ >= FRAME_TIME) {
             animTimer_ = 0.0;
             frame_ = (frame_ + 1) % FRAME_COUNT;

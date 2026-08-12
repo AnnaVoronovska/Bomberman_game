@@ -11,7 +11,7 @@
 #include <vector>
 
 // ============================================================
-// World.hpp
+// World.h
 // World is de "Controller" uit MVC: hij bezit alle entity-Models en
 // regisseert de volledige spellogica (spawnen, botsing, bom-explosies,
 // eenvoudige bot-AI, win/verlies). Hoort volledig bij de logic-library:

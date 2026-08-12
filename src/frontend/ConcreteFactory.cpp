@@ -76,10 +76,10 @@ std::shared_ptr<Door> ConcreteFactory::createDoor(Vec2 position) {
     return model;
 }
 
-void ConcreteFactory::drawAll(sf::RenderWindow& window) {
+void ConcreteFactory::drawAll(sf::RenderWindow& window, double deltaTime) {
     for (auto& v : views_) {
         if (!v->isExpired())
-            v->draw(window);
+            v->draw(window, deltaTime);
     }
 }
 

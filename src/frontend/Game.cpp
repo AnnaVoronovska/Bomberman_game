@@ -49,7 +49,7 @@ void Game::run() {
         processInput();
         if (state_ == State::Playing)
             update(dt);
-        render();
+        render(dt);
     }
 }
 
@@ -58,6 +58,10 @@ void Game::processInput() {
     while (window_.pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             window_.close();
+        }
+
+        if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::F1) {
+            showDebugOverlay_ = !showDebugOverlay_;
         }
 
         if (state_ == State::StartScreen && event.type == sf::Event::MouseButtonPressed) {
@@ -128,7 +132,7 @@ void Game::update(double dt) {
     }
 }
 
-void Game::render() {
+void Game::render(double dt) {
     window_.clear(sf::Color(20, 20, 24));
 
     if (state_ == State::StartScreen) {
@@ -233,7 +237,7 @@ void Game::render() {
             }
         }
 
-        factory_->drawAll(window_);
+        factory_->drawAll(window_, dt);
 
         // ---- HUD-balk: terug naar de volledige-venster view ----
         window_.setView(window_.getDefaultView());
@@ -296,6 +300,30 @@ void Game::render() {
             timerText.setFillColor(totalSeconds <= 30 ? sf::Color(255, 60, 60) : sf::Color(200, 200, 200));
             if (fontLoaded_)
                 window_.draw(timerText);
+        }
+
+        // ---- Debug-overlay (F1): toont via het Visitor-patroon welke
+        // entiteiten er op de cel van de speler staan. Louter een dev-tool,
+        // heeft geen invloed op de spelregels zelf. ----
+        if (showDebugOverlay_ && player) {
+            double cw = 2.0 / bomberman::GRID_COLS;
+            double ch = 2.0 / bomberman::GRID_ROWS;
+            int col = static_cast<int>(std::round((player->getPosition().x + 1.0) / cw - 0.5));
+            int row = static_cast<int>(std::round((player->getPosition().y + 1.0) / ch - 0.5));
+            auto labels = world_->describeEntitiesAt(col, row);
+
+            std::string debugStr = "[F1] Cel (" + std::to_string(col) + "," + std::to_string(row) + "): ";
+            debugStr += labels.empty() ? "leeg" : "";
+            for (std::size_t i = 0; i < labels.size(); ++i) {
+                debugStr += labels[i];
+                if (i + 1 < labels.size())
+                    debugStr += ", ";
+            }
+            sf::Text debugText(debugStr, font_, 14);
+            debugText.setPosition(10.f, static_cast<float>(HUD_HEIGHT) + 4.f);
+            debugText.setFillColor(sf::Color(150, 255, 150));
+            if (fontLoaded_)
+                window_.draw(debugText);
         }
 
         // ---- "STAGE 1"-venster: kort getoond bovenop het speelveld bij de start. ----

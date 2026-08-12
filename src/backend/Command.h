@@ -5,7 +5,7 @@
 #include <vector>
 
 // ============================================================
-// Command.hpp
+// Command.h
 // Command design pattern: een speler-actie (bewegen, bom plaatsen) wordt
 // verpakt als een object i.p.v. rechtstreeks World::setPlayerDirection() /
 // World::requestPlayerBomb() aan te roepen. Dit ontkoppelt de invoerbron
