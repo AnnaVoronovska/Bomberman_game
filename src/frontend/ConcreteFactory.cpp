@@ -1,11 +1,12 @@
 #include "ConcreteFactory.h"
 #include "World.h" // voor GRID_COLS / GRID_ROWS
 #include <algorithm>
+#include <utility>
 
 using namespace bomberman;
 
-ConcreteFactory::ConcreteFactory(const Camera& camera, const sf::Texture& texture)
-    : camera_(camera), texture_(texture) {}
+ConcreteFactory::ConcreteFactory(const Camera& camera, const sf::Texture& texture, std::shared_ptr<AudioManager> audio)
+    : camera_(camera), texture_(texture), audio_(std::move(audio)) {}
 
 std::shared_ptr<Character> ConcreteFactory::createCharacter(Vec2 position, bool isBot) {
     auto model = std::make_shared<Character>(position, Vec2(0.11, 0.11), isBot);
@@ -30,6 +31,8 @@ std::shared_ptr<Character> ConcreteFactory::createCharacter(Vec2 position, bool 
 
     auto view = std::make_shared<CharacterView>(model, camera_, texture_, rowBase, colBase);
     model->attach(view);
+    if (audio_)
+        model->attach(audio_); // AudioManager hoort Damaged/Died rechtstreeks van dit character
     views_.push_back(view);
     return model;
 }
@@ -38,6 +41,8 @@ std::shared_ptr<Wall> ConcreteFactory::createWall(Vec2 position, bool destructib
     auto model = std::make_shared<Wall>(position, Vec2(2.0 / GRID_COLS, 2.0 / GRID_ROWS), destructible);
     auto view = std::make_shared<WallView>(model, camera_, texture_);
     model->attach(view);
+    if (audio_)
+        model->attach(audio_); // BlockDestroyed
     views_.push_back(view);
     return model;
 }
@@ -46,6 +51,8 @@ std::shared_ptr<Bomb> ConcreteFactory::createBomb(Vec2 position, int radius, std
     auto model = std::make_shared<Bomb>(position, Vec2(0.09, 0.09), radius, owner);
     auto view = std::make_shared<BombView>(model, camera_, texture_);
     model->attach(view);
+    if (audio_)
+        model->attach(audio_); // BombExploded
     views_.push_back(view);
     return model;
 }
@@ -55,6 +62,8 @@ std::shared_ptr<PowerUp> ConcreteFactory::createPowerUp(Vec2 position, PowerUpTy
                                            type); // iets groter dan voorheen (0.06), zodat het icoon goed zichtbaar is
     auto view = std::make_shared<PowerUpView>(model, camera_, texture_);
     model->attach(view);
+    if (audio_)
+        model->attach(audio_); // PowerUpCollected
     views_.push_back(view);
     return model;
 }

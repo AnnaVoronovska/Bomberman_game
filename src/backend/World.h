@@ -4,7 +4,9 @@
 #include "Entities.h"
 #include "Observer.h"
 #include "Score.h"
+#include "Visitor.h"
 #include <memory>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -21,6 +23,7 @@ namespace bomberman {
 constexpr int GRID_COLS = 13;
 constexpr int GRID_ROWS = 11;
 constexpr double LEVEL_TIME_SECONDS = 180.0; // 3 minuten per level
+constexpr int MAX_LEVEL = 2; // de deur op dit level wint het spel i.p.v. door te gaan naar een volgend level
 
 class World : public Subject {
 public:
@@ -46,6 +49,11 @@ public:
     // Input van de representatie-laag wordt hier vertaald naar logica.
     void setPlayerDirection(Direction dir);
     void requestPlayerBomb();
+
+    // Visitor-patroon in actie: bouwt leesbare labels op van alle entiteiten
+    // (muur/bom/power-up/character/deur) die zich op deze cel bevinden.
+    // Bedoeld voor een debug-overlay/tooltip in de representatie-laag.
+    std::vector<std::string> describeEntitiesAt(int col, int row) const;
 
 private:
     Vec2 cellToWorld(int col, int row) const;

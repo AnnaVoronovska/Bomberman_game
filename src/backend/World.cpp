@@ -145,6 +145,47 @@ void World::setPlayerDirection(Direction dir) {
 
 void World::requestPlayerBomb() { pendingPlayerBomb_ = true; }
 
+std::vector<std::string> World::describeEntitiesAt(int col, int row) const {
+    Vec2 target = cellToWorld(col, row);
+    auto atCell = [&](const Vec2& pos) {
+        return std::abs(pos.x - target.x) < 1e-6 && std::abs(pos.y - target.y) < 1e-6;
+    };
+
+    std::vector<std::string> labels;
+    EntityLabelVisitor labelVisitor;
+
+    for (auto& w : walls_) {
+        if (atCell(w->getPosition())) {
+            w->accept(labelVisitor);
+            labels.push_back(labelVisitor.getLabel());
+        }
+    }
+    for (auto& b : bombs_) {
+        if (atCell(b->getPosition())) {
+            b->accept(labelVisitor);
+            labels.push_back(labelVisitor.getLabel());
+        }
+    }
+    for (auto& p : powerUps_) {
+        if (atCell(p->getPosition())) {
+            p->accept(labelVisitor);
+            labels.push_back(labelVisitor.getLabel());
+        }
+    }
+    for (auto& c : characters_) {
+        if (atCell(c->getPosition())) {
+            c->accept(labelVisitor);
+            labels.push_back(labelVisitor.getLabel());
+        }
+    }
+    if (door_ && atCell(door_->getPosition())) {
+        door_->accept(labelVisitor);
+        labels.push_back(labelVisitor.getLabel());
+    }
+
+    return labels;
+}
+
 // ---------------- Beweging + botsing ----------------
 
 void World::tryMoveCharacter(Character& c, double deltaTime) {
@@ -780,10 +821,21 @@ void World::update(double deltaTime) {
         }
     }
 
-    // Verborgen deur bereikt: nieuwe stage, zelfde speler/score/lives.
-    // Meteen return: deze tick is "klaar", de volgende begint vers in de nieuwe arena.
+    // Verborgen deur bereikt: op het laatste level (MAX_LEVEL) is dit de
+    // overwinning; op elk eerder level gaat het gewoon naar de volgende stage.
+    // Meteen return: deze tick is "klaar", de volgende begint vers.
     if (door_ && player_->isAlive() && player_->intersects(*door_)) {
-        advanceToNextLevel();
+        if (currentLevel_ >= MAX_LEVEL) {
+            gameOver_ = true;
+            playerWon_ = true;
+            notify(Event{EventType::PlayerWon, player_.get()});
+            // Ook rechtstreeks op het Player-Model zelf notifyen, zodat de
+            // (op dit Model geabonneerde) CharacterView de victory-animatie
+            // kan starten. World::notify() bereikt enkel World-observers (Score).
+            player_->notify(Event{EventType::PlayerWon, player_.get()});
+        } else {
+            advanceToNextLevel();
+        }
         return;
     }
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Observer.h"
+#include "Visitor.h"
 #include <memory>
 
 // ============================================================
@@ -39,6 +40,11 @@ public:
     bool isMarkedForRemoval() const { return markedForRemoval_; }
     void markForRemoval();
 
+    // Visitor-patroon: elke concrete subklasse roept visitor.visit(*this)
+    // aan, zodat een EntityVisitor via double dispatch de juiste overload
+    // te pakken krijgt zonder dat World/Views ooit dynamic_cast nodig hebben.
+    virtual void accept(EntityVisitor& visitor) = 0;
+
 protected:
     Vec2 position_;
     Vec2 size_;
@@ -50,6 +56,8 @@ public:
     Wall(Vec2 position, Vec2 size, bool destructible);
     bool isDestructible() const { return destructible_; }
     void destroy(); // notify + markeren voor verwijdering
+
+    void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
 
 private:
     bool destructible_;
@@ -63,6 +71,8 @@ public:
     PowerUpType getType() const { return type_; }
     void collect(); // notify + markeren voor verwijdering
 
+    void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
+
 private:
     PowerUpType type_;
 };
@@ -73,6 +83,8 @@ private:
 class Door : public EntityModel {
 public:
     Door(Vec2 position, Vec2 size);
+
+    void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
 };
 
 class Character; // forward declaration: Bomb heeft enkel een niet-eigenaar referentie nodig
@@ -93,6 +105,8 @@ public:
     // Voorkomt dat een kettingreactie dezelfde bom twee keer schade laat
     // toebrengen: geeft exact één keer true terug.
     bool consumeDamageFlag();
+
+    void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
 
 private:
     int radius_;
@@ -145,6 +159,8 @@ public:
     // tot je hem verlaat (klassieke Bomberman-regel).
     std::weak_ptr<Bomb> getStandingOnBomb() const { return standingOnBomb_; }
     void setStandingOnBomb(std::weak_ptr<Bomb> bomb) { standingOnBomb_ = bomb; }
+
+    void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
 
 private:
     Direction direction_ = Direction::Down;

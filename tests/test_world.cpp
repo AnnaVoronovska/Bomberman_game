@@ -145,3 +145,13 @@ TEST_F(WorldTest, BotsAreCreatedAliveAndDistinctFromPlayer) {
     world.update(0.001); // triggert checkWinCondition()
     EXPECT_FALSE(world.isGameOver());
 }
+
+TEST_F(WorldTest, GameStartsAtLevelOneAndMaxLevelIsTwo) {
+    // MAX_LEVEL bepaalt op welk level de deur wint i.p.v. naar de volgende
+    // stage te gaan (zie World::update(): "if (currentLevel_ >= MAX_LEVEL)").
+    // Deur-interactie zelf is niet deterministisch testbaar (willekeurige
+    // doorplacement + geen publieke setter), maar deze twee waarden zijn de
+    // volledige basis van die regel en horen dus altijd te kloppen.
+    EXPECT_EQ(world.getCurrentLevel(), 1);
+    EXPECT_EQ(MAX_LEVEL, 2);
+}

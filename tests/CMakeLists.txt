@@ -29,6 +29,8 @@ add_library(bomberman_logic_test STATIC
         ${BACKEND_DIR}/Entities.cpp
         ${BACKEND_DIR}/Score.cpp
         ${BACKEND_DIR}/World.cpp
+        ${BACKEND_DIR}/Command.cpp
+        ${BACKEND_DIR}/Visitor.cpp
 )
 target_include_directories(bomberman_logic_test PUBLIC ${BACKEND_DIR})
 
@@ -39,6 +41,8 @@ add_executable(bomberman_tests
         test_entities.cpp
         test_score.cpp
         test_world.cpp
+        test_command.cpp
+        test_visitor.cpp
 )
 target_link_libraries(bomberman_tests PRIVATE bomberman_logic_test GTest::gtest GTest::gtest_main)
 target_include_directories(bomberman_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

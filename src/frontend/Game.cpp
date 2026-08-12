@@ -23,16 +23,22 @@ Game::Game()
         throw std::runtime_error("Kon spritesheet.png niet laden");
     }
 
+    // AudioManager wordt maar 1x aangemaakt (laadt alle geluidsbuffers 1x in),
+    // en telkens hergebruikt/opnieuw gekoppeld in startNewGame().
+    audio_ = std::make_shared<AudioManager>();
+
     startNewGame();
 }
 
 void Game::startNewGame() {
-    factory_ = std::make_unique<ConcreteFactory>(camera_, spriteSheet_);
+    factory_ = std::make_unique<ConcreteFactory>(camera_, spriteSheet_, audio_);
     score_ = std::make_shared<Score>();
     world_ = std::make_unique<World>(*factory_, *score_);
     world_->attach(score_); // Observer-patroon: Score luistert naar de events van World
+    world_->attach(audio_); // AudioManager hoort ook World-brede events: BombPlaced, PlayerWon, EnemyKilled
     world_->generateArena();
     stageBannerTimer_ = STAGE_BANNER_DURATION; // toon "STAGE 1" venster bij start
+    audio_->playMusic("assets/sounds/music.ogg");
 }
 
 void Game::run() {
@@ -57,6 +63,7 @@ void Game::processInput() {
         if (state_ == State::StartScreen && event.type == sf::Event::MouseButtonPressed) {
             // De "Play"-knop beslaat het onderste gedeelte van het venster.
             if (event.mouseButton.y > static_cast<int>(WINDOW_SIZE) / 2) {
+                audio_->playClickSound();
                 startNewGame();
                 state_ = State::Playing;
             }
@@ -72,6 +79,10 @@ void Game::processInput() {
 
     // Continue beweging (niet discreet): elke frame wordt de richting doorgegeven,
     // World::update() vermenigvuldigt dit met deltaTime.
+    // Command-patroon: input wordt niet rechtstreeks op world_ uitgevoerd, maar
+    // eerst verpakt in een MoveCommand/PlaceBombCommand-object. Dat maakt het
+    // triviaal om later bv. een AI-script of een replay dezelfde commands te
+    // laten afvuren, zonder dat die iets van SFML-toetsen hoeven te weten.
     Direction dir = Direction::None;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         dir = Direction::Up;
@@ -81,10 +92,15 @@ void Game::processInput() {
         dir = Direction::Left;
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         dir = Direction::Right;
-    world_->setPlayerDirection(dir);
+
+    auto moveCommand = std::make_shared<MoveCommand>(dir);
+    moveCommand->execute(*world_);
+    commandHistory_.record(moveCommand);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        world_->requestPlayerBomb();
+        auto bombCommand = std::make_shared<PlaceBombCommand>();
+        bombCommand->execute(*world_);
+        commandHistory_.record(bombCommand);
     }
 }
 
@@ -104,9 +120,12 @@ void Game::update(double dt) {
     // korte "STAGE X"-banner, net als bij de allereerste start.
     if (world_->consumeStageAdvanced()) {
         stageBannerTimer_ = STAGE_BANNER_DURATION;
+        audio_->playNextLevelSound();
     }
-    if (world_->isGameOver())
+    if (world_->isGameOver() && state_ != State::GameOver) {
         state_ = State::GameOver;
+        audio_->pauseMusic(); // pauzeren i.p.v. stoppen: bij een nieuwe game hervat de muziek gewoon
+    }
 }
 
 void Game::render() {

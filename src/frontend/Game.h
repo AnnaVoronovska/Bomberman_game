@@ -1,4 +1,6 @@
 #pragma once
+#include "AudioManager.h"
+#include "Command.h"
 #include "ConcreteFactory.h"
 #include "Score.h"
 #include "World.h"
@@ -27,9 +29,11 @@ private:
 
     sf::RenderWindow window_;
     bomberman::Camera camera_;
+    std::shared_ptr<AudioManager> audio_; // 1x aangemaakt, blijft over meerdere games/levels heen bestaan
     std::unique_ptr<ConcreteFactory> factory_;
     std::shared_ptr<bomberman::Score> score_; // shared_ptr nodig: Subject::attach vereist shared_ptr<Observer>
     std::unique_ptr<bomberman::World> world_;
+    bomberman::CommandHistory commandHistory_; // Command-patroon: logt elke uitgevoerde actie
     State state_ = State::StartScreen;
     sf::Font font_;
     bool fontLoaded_ = false;
