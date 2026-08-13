@@ -135,7 +135,10 @@ void Character::applyPowerUp(PowerUpType type) {
         speed_ = std::max(0.1, speed_ - 0.15);
         break;
     case PowerUpType::Freeze:
-        speed_ += 0.25;
+        // Doet zelf niets bij de oprapende character: het effect (alle
+        // ANDERE characters vertragen, zoals de opgave zelf als voorbeeld
+        // geeft) wordt afgehandeld in World::update() tijdens het oprapen,
+        // niet hier. Zie World.cpp.
         break;
     case PowerUpType::Skull:
         bombRadius_ = std::max(1, bombRadius_ - 1);

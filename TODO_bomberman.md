@@ -17,7 +17,7 @@
 - [ ] Opdracht herlezen en zien of ik iets gemist heb
 
 ### Te verifiëren
-- [ ] `valgrind` runnen — opgave vraagt dit expliciet (memory leaks + initialisatie)
+- [x] `valgrind` runnen — opgave vraagt dit expliciet (memory leaks + initialisatie)
 - [ ] Check of alle primitieve types overal expliciet geïnitialiseerd zijn
 
 ### Optioneel (bonus, max 10%)

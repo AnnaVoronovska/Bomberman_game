@@ -811,7 +811,17 @@ void World::update(double deltaTime) {
             continue;
         for (auto& p : powerUps_) {
             if (c->intersects(*p)) {
-                c->applyPowerUp(p->getType());
+                if (p->getType() == PowerUpType::Freeze) {
+                    // Speciaal geval: Freeze beïnvloedt niet de oprapende
+                    // character zelf, maar vertraagt alle ANDERE nog levende
+                    // characters (hergebruikt de al-geteste Slow-logica).
+                    for (auto& other : characters_) {
+                        if (other != c && other->isAlive())
+                            other->applyPowerUp(PowerUpType::Slow);
+                    }
+                } else {
+                    c->applyPowerUp(p->getType());
+                }
                 bool isPlayer = (c == player_);
                 p->collect();
                 if (isPlayer)
