@@ -68,4 +68,4 @@ Bomberman_game/
 ## Links
 
 - GitHub-repo: https://github.com/AnnaVoronovska/Bomberman_game.git
-- CI-status: [CIRCLECI-BADGE/LINK HIER]
+- CI-status: https://dl.circleci.com/status-badge/redirect/gh/AnnaVoronovska/Bomberman_game/tree/main
