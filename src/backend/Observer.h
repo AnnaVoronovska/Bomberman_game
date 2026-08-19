@@ -28,27 +28,30 @@ enum class EventType {
     PlayerWon         // de Player heeft gewonnen
 };
 
-// Lichtgewicht event dat van een Subject naar zijn Observers gestuurd wordt.
+/// @brief Lichtgewicht event dat van een Subject naar zijn Observers gestuurd wordt.
 struct Event {
     EventType type;
     EntityModel* source = nullptr; // niet-eigenaar, enkel geldig tijdens de notify-call
     double value = 0.0;            // extra data, bv. deltaTime bij Tick
 };
 
-// Observer-kant van het patroon.
+/// @brief Observer-kant van het patroon: ontvangt Events van een Subject.
 class Observer {
 public:
     virtual ~Observer() = default;
+    /// @brief Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt.
     virtual void onNotify(const Event& event) = 0;
 };
 
-// Subject-kant van het patroon.
+/// @brief Subject-kant van het patroon: houdt Observers bij en stuurt hen Events.
 class Subject {
 public:
     virtual ~Subject() = default;
 
+    /// @brief Voegt een Observer toe die vanaf nu Events van dit Subject ontvangt.
     void attach(const std::shared_ptr<Observer>& observer) { observers_.push_back(observer); }
 
+    /// @brief Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op.
     void notify(const Event& event) {
         for (auto it = observers_.begin(); it != observers_.end();) {
             if (auto obs = it->lock()) {

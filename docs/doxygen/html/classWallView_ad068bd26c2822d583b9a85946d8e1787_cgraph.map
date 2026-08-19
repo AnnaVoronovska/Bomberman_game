@@ -1,0 +1,7 @@
+<map id="WallView::draw" name="WallView::draw">
+<area shape="rect" id="Node000001" title="Tekent deze entiteit op het venster; deltaTime dient voor animatietiming." alt="" coords="5,45,127,70"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Camera.html#a1c52308ddd4996a4a84d65798edba6ff" title="Zet een wereldpositie om naar een pixelpositie op het scherm." alt="" coords="175,5,343,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,45,161,39,162,44,127,50"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Camera.html#a6c93412fbf1528970e2006a3dc02b614" title="Zet een wereldgrootte om naar een pixelgrootte (voor sprite&#45;dimensies)." alt="" coords="175,69,343,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,65,162,71,161,76,126,70"/>
+</map>

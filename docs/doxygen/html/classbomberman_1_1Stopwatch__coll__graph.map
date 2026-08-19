@@ -1,0 +1,3 @@
+<map id="bomberman::Stopwatch" name="bomberman::Stopwatch">
+<area shape="rect" id="Node000001" title="Singleton die het tijdsverschil (deltaTime) tussen twee update&#45;ticks bijhoudt. Wordt gebruikt door zo..." alt="" coords="5,5,175,251"/>
+</map>

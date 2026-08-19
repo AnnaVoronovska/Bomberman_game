@@ -1,0 +1,41 @@
+<map id="bomberman::World::updateBotAI" name="bomberman::World::updateBotAI">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,328,204,368"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a95df4d3f360e9473131d30cd0a2e879f" title=" " alt="" coords="269,5,461,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,327,124,275,152,204,193,128,220,93,250,62,268,50,271,54,254,66,224,96,198,131,156,206,129,276,113,329"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a952a3dc95c99ae04c55324b46a62a59c" title=" " alt="" coords="267,120,464,160"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,326,169,254,207,212,250,176,274,163,277,168,254,181,210,216,173,257,120,329"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Wall.html#a2932a1b1e31e0705e196ea160a2e461b" title=" " alt="" coords="527,99,761,125"/>
+<area shape="poly" id="edge17_Node000001_Node000004" title=" " alt="" coords="108,327,124,279,152,217,171,185,193,154,220,127,251,106,293,87,338,75,385,69,431,69,519,78,590,93,589,98,518,83,431,74,385,75,339,80,295,92,253,110,223,131,197,158,175,188,156,219,129,281,114,329"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#a72cc57d304b4dafdfe3b67fd3f2e5d06" title=" " alt="" coords="534,242,754,267"/>
+<area shape="poly" id="edge23_Node000001_Node000005" title=" " alt="" coords="119,326,172,270,209,242,251,220,297,207,344,201,392,200,439,203,526,217,595,235,593,240,524,222,438,208,392,205,344,206,298,213,253,225,212,246,176,274,123,330"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1World.html#a5377bc4c52bcbd55bf3a618724e9e5a5" title=" " alt="" coords="253,235,477,275"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="149,325,251,284,275,276,277,281,253,289,151,330"/>
+<area shape="rect" id="Node000008" href="$classbomberman_1_1World.html#a56bd2a8ef459947b72e0b78a0054012e" title=" " alt="" coords="262,299,469,339"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="204,334,248,329,249,334,205,339"/>
+<area shape="rect" id="Node000009" href="$classbomberman_1_1World.html#ab067f827d49a12dcf9adc0a15f65e898" title=" " alt="" coords="535,363,753,389"/>
+<area shape="poly" id="edge16_Node000001_Node000009" title=" " alt="" coords="205,350,521,367,521,372,204,356"/>
+<area shape="rect" id="Node000010" href="$classbomberman_1_1Random.html#af17d632693edcd1b59d4353df1fbc808" title="Geeft een willekeurige double terug in het interval [0, 1)." alt="" coords="280,413,451,453"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="167,365,291,406,290,412,166,371"/>
+<area shape="rect" id="Node000011" href="$classbomberman_1_1Random.html#ab1bc92e42f390dce5f4233e801a99f63" title="Geeft een willekeurig geheel getal terug, inclusief [min, max]." alt="" coords="280,477,451,517"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="128,366,182,415,216,441,253,463,268,470,266,475,251,468,213,445,178,419,124,370"/>
+<area shape="rect" id="Node000012" href="$classbomberman_1_1EntityModel.html#af03c7204310eb5fbf127b26cc9bc1e90" title=" " alt="" coords="272,541,459,581"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="119,367,140,402,170,445,208,489,254,527,263,533,261,538,250,532,205,493,166,448,135,405,114,370"/>
+<area shape="rect" id="Node000013" href="$classbomberman_1_1Random.html#a52fb8b6134beae577f7dc6b2b5be0de5" title="Geeft de enige instantie van de Random singleton terug." alt="" coords="280,605,451,645"/>
+<area shape="poly" id="edge15_Node000001_Node000013" title=" " alt="" coords="115,367,132,414,161,474,201,537,226,566,254,591,269,601,266,605,250,595,222,570,197,541,156,477,127,416,110,369"/>
+<area shape="rect" id="Node000014" href="$classbomberman_1_1World.html#aae09a15edd7c876773fb8a7fb68f24e0" title=" " alt="" coords="252,670,479,695"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="112,368,125,425,151,504,170,545,193,586,221,623,254,655,262,661,259,666,250,659,217,627,188,589,165,548,146,506,120,427,107,369"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="464,127,512,123,513,128,465,133"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="430,158,480,176,606,233,604,238,478,181,428,163"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="809,356,1000,396"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="674,265,849,348,847,353,671,270"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="477,252,520,252,520,257,477,257"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="453,296,574,268,575,273,454,301"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="464,336,569,358,568,363,463,341"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="753,373,796,373,796,379,753,379"/>
+<area shape="poly" id="edge19_Node000014_Node000006" title=" " alt="" coords="444,667,477,655,502,637,525,617,707,494,856,401,859,406,710,498,528,621,505,642,480,660,446,672"/>
+<area shape="poly" id="edge21_Node000014_Node000009" title=" " alt="" coords="459,668,477,655,493,636,502,618,506,579,508,537,513,514,524,489,544,461,567,436,612,395,616,399,571,439,548,465,529,492,518,516,513,538,512,579,507,619,497,639,480,659,462,672"/>
+<area shape="rect" id="Node000015" href="$classbomberman_1_1AbstractFactory.html#ad64cf90d9aca8ddfe463d8dc90ec5251" title="Maakt een Bomb aan op de gegeven positie met gegeven radius en eigenaar." alt="" coords="539,631,749,671"/>
+<area shape="poly" id="edge20_Node000014_Node000015" title=" " alt="" coords="476,667,525,662,525,667,476,673"/>
+<area shape="rect" id="Node000016" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="565,695,723,735"/>
+<area shape="poly" id="edge22_Node000014_Node000016" title=" " alt="" coords="476,693,552,701,551,707,476,698"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="bomberman::Character" name="bomberman::Character">
+<area shape="rect" id="Node000001" title="Een speelbaar of bot&#45;gestuurd character (Player of vijand)." alt="" coords="59,563,266,1028"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1EntityModel.html" title="Basisklasse (Model) voor elke spel&#45;entiteit. Erft van Subject zodat Views zich via het Observer&#45;patro..." alt="" coords="73,268,252,513"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,527,165,562,160,562,160,527"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Subject.html" title="Subject&#45;kant van het patroon: houdt Observers bij en stuurt hen Events." alt="" coords="5,45,155,151"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,163,131,267,125,269,96,165"/>
+<area shape="rect" id="Node000004" href="$structbomberman_1_1Vec2.html" title="Eenvoudige 2D vector, gebruikt voor posities, groottes en richtingen." alt="" coords="179,5,311,191"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="222,191,204,253,199,251,217,190"/>
+</map>

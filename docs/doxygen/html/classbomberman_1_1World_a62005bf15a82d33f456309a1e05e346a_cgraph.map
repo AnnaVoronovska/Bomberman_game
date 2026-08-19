@@ -1,0 +1,36 @@
+<map id="bomberman::World::explodeBomb" name="bomberman::World::explodeBomb">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,159,249,184"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a0067d2ade4c6c10bf7196962087e1dfa" title=" " alt="" coords="297,119,551,159"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,164,304,158,305,164,250,170"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Bomb.html#a2e1c3100f6254b0387b27eb2ae28e082" title=" " alt="" coords="611,5,829,31"/>
+<area shape="poly" id="edge14_Node000001_Node000005" title=" " alt="" coords="157,156,221,131,297,105,380,82,447,69,598,41,644,31,646,36,599,46,448,74,382,88,298,110,222,136,159,161"/>
+<area shape="rect" id="Node000012" href="$classbomberman_1_1EntityModel.html#af03c7204310eb5fbf127b26cc9bc1e90" title=" " alt="" coords="331,183,517,223"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="246,181,317,189,316,194,245,187"/>
+<area shape="rect" id="Node000013" href="$classbomberman_1_1Bomb.html#a730503a560def7d848653ea5449ce83f" title=" " alt="" coords="314,248,534,273"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="159,182,222,207,298,233,336,242,335,248,297,238,220,212,157,187"/>
+<area shape="rect" id="Node000014" href="$classbomberman_1_1World.html#adc6991ff2d55e937ae11168c1a26add3" title=" " alt="" coords="325,298,523,338"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="146,182,210,231,253,258,298,282,321,291,319,296,296,287,250,263,207,235,142,186"/>
+<area shape="poly" id="edge4_Node000002_Node000001" title=" " alt="" coords="297,147,194,159,194,154,296,141"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="899,245,1090,285"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="530,157,552,169,568,186,576,203,584,219,600,233,634,249,669,261,744,275,818,280,885,277,886,282,818,285,743,281,668,266,632,254,597,238,580,223,572,205,564,189,549,173,527,162"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1AbstractFactory.html#ab42937d6784bc4dbcbc85cadea599fa5" title="Maakt een Door aan op de gegeven positie." alt="" coords="615,55,825,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="517,117,613,96,614,101,518,122"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="460,117,598,41,627,32,629,37,600,46,462,122"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1World.html#ac7c08441a7925be801817e92be21bc91" title=" " alt="" coords="599,119,841,159"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="551,137,585,137,585,142,551,142"/>
+<area shape="rect" id="Node000010" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="641,183,799,223"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="518,157,629,181,627,186,517,162"/>
+<area shape="rect" id="Node000011" href="$classbomberman_1_1World.html#a72cc57d304b4dafdfe3b67fd3f2e5d06" title=" " alt="" coords="610,299,830,324"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="535,157,552,169,565,183,572,197,577,225,582,252,589,265,600,277,622,291,619,295,597,281,585,268,577,254,572,226,567,199,560,186,549,173,532,162"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="820,157,843,169,859,185,868,201,876,216,891,231,900,236,897,241,888,235,872,219,863,203,855,188,840,173,817,162"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1AbstractFactory.html#afba3e7b0f15586a3ac97c9a075b09d61" title="Maakt een PowerUp aan van het gegeven type op de gegeven positie." alt="" coords="889,117,1100,157"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="841,135,876,135,876,140,841,141"/>
+<area shape="rect" id="Node000008" href="$classbomberman_1_1Random.html#ab1bc92e42f390dce5f4233e801a99f63" title="Geeft een willekeurig geheel getal terug, inclusief [min, max]." alt="" coords="909,181,1080,221"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="811,157,897,176,895,181,810,162"/>
+<area shape="rect" id="Node000009" href="$classbomberman_1_1Random.html#a52fb8b6134beae577f7dc6b2b5be0de5" title="Geeft de enige instantie van de Random singleton terug." alt="" coords="909,53,1080,93"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="802,117,898,93,899,99,804,122"/>
+<area shape="poly" id="edge13_Node000011_Node000003" title=" " alt="" coords="795,296,885,281,886,286,796,301"/>
+<area shape="poly" id="edge19_Node000014_Node000011" title=" " alt="" coords="523,313,596,311,596,317,523,318"/>
+<area shape="rect" id="Node000015" href="$classbomberman_1_1Wall.html#a2932a1b1e31e0705e196ea160a2e461b" title=" " alt="" coords="603,348,837,373"/>
+<area shape="poly" id="edge18_Node000014_Node000015" title=" " alt="" coords="524,330,619,343,618,349,523,335"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="bomberman::Observer" name="bomberman::Observer">
+<area shape="rect" id="Node000001" title="Observer&#45;kant van het patroon: ontvangt Events van een Subject." alt="" coords="331,5,491,91"/>
+<area shape="rect" id="Node000002" href="$classAudioManager.html" title="Speelt geluidseffecten en achtergrondmuziek af als reactie op Events uit de logic&#45;library (zie uitleg..." alt="" coords="153,139,327,564"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="367,103,341,140,329,160,325,157,336,137,363,100"/>
+<area shape="rect" id="Node000003" href="$classEntityView.html" title="Basisklasse (View) voor de grafische weergave van een EntityModel. Abonneert zich via het Observer&#45;pa..." alt="" coords="351,259,471,444"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="413,105,413,259,408,259,408,105"/>
+<area shape="rect" id="Node000009" href="$classbomberman_1_1Score.html" title="Observer die luistert naar spel&#45;events en er score&#45;aanpassingen van maakt. Beheert ook de top&#45;5 hoogs..." alt="" coords="495,229,651,474"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="459,100,485,137,530,227,525,229,480,140,454,103"/>
+<area shape="rect" id="Node000004" href="$classBombView.html" title="View voor een Bomb: tekent het aftellende bom&#45;sprite en de explosie&#45;animatie." alt="" coords="5,642,165,887"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="398,458,377,516,361,542,340,566,320,581,300,590,260,593,220,595,200,601,179,614,149,644,145,640,176,610,198,597,219,590,260,588,298,584,317,577,337,562,356,539,372,513,393,456"/>
+<area shape="rect" id="Node000005" href="$classCharacterView.html" title="View voor een Character (Player of bot): tekent de richtingsgebonden loop&#45;animatie en de death&#45;/victo..." alt="" coords="190,612,335,917"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="378,458,341,565,324,613,319,611,336,563,373,456"/>
+<area shape="rect" id="Node000006" href="$classDoorView.html" title="View voor een Door: tekent de verborgen deur met een pulserend effect." alt="" coords="360,712,461,817"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="413,458,413,711,408,711,408,458"/>
+<area shape="rect" id="Node000007" href="$classPowerUpView.html" title="View voor een PowerUp: tekent het sprite dat bij het power&#45;up type hoort." alt="" coords="486,712,615,817"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="449,456,535,711,530,712,444,458"/>
+<area shape="rect" id="Node000008" href="$classWallView.html" title="View voor een Wall: tekent een breekbare of onverwoestbare muurtegel." alt="" coords="640,712,739,817"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="430,457,451,513,467,539,486,562,503,575,520,582,556,586,592,589,611,596,630,610,649,633,664,658,682,711,677,713,659,661,645,636,626,614,608,601,591,594,555,591,519,588,501,580,482,566,462,542,446,515,425,458"/>
+</map>

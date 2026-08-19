@@ -1,0 +1,12 @@
+<map id="bomberman::World::placeBomb" name="bomberman::World::placeBomb">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,65,232,90"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="545,28,736,68"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,63,204,36,279,14,340,5,388,3,498,14,552,23,551,28,497,19,388,8,341,10,281,19,206,41,146,67"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1AbstractFactory.html#ad64cf90d9aca8ddfe463d8dc90ec5251" title="Maakt een Bomb aan op de gegeven positie met gegeven radius en eigenaar." alt="" coords="283,28,494,68"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,63,269,59,270,64,233,68"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#ab067f827d49a12dcf9adc0a15f65e898" title=" " alt="" coords="280,93,497,118"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="232,87,267,90,266,96,232,92"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="310,143,467,183"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="160,88,281,127,310,136,308,141,279,132,158,93"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="445,90,539,69,540,74,446,96"/>
+</map>

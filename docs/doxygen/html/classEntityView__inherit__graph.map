@@ -1,0 +1,15 @@
+<map id="EntityView" name="EntityView">
+<area shape="rect" id="Node000001" title="Basisklasse (View) voor de grafische weergave van een EntityModel. Abonneert zich via het Observer&#45;pa..." alt="" coords="351,139,471,324"/>
+<area shape="rect" id="Node000003" href="$classBombView.html" title="View voor een Bomb: tekent het aftellende bom&#45;sprite en de explosie&#45;animatie." alt="" coords="5,402,165,647"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="340,267,258,312,217,341,179,374,154,404,149,400,175,370,214,337,255,308,337,262"/>
+<area shape="rect" id="Node000004" href="$classCharacterView.html" title="View voor een Character (Player of bot): tekent de richtingsgebonden loop&#45;animatie en de death&#45;/victo..." alt="" coords="190,372,335,677"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="360,338,338,381,333,379,355,335"/>
+<area shape="rect" id="Node000005" href="$classDoorView.html" title="View voor een Door: tekent de verborgen deur met een pulserend effect." alt="" coords="360,472,461,577"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="413,338,413,472,408,472,408,338"/>
+<area shape="rect" id="Node000006" href="$classPowerUpView.html" title="View voor een PowerUp: tekent het sprite dat bij het power&#45;up type hoort." alt="" coords="486,472,615,577"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="463,335,528,471,524,473,458,338"/>
+<area shape="rect" id="Node000007" href="$classWallView.html" title="View voor een Wall: tekent een breekbare of onverwoestbare muurtegel." alt="" coords="640,472,739,577"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="485,262,560,307,597,337,630,370,647,394,660,420,680,471,675,473,656,422,642,397,626,374,594,341,557,312,482,267"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Observer.html" title="Observer&#45;kant van het patroon: ontvangt Events van een Subject." alt="" coords="331,5,491,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="413,104,413,138,408,138,408,104"/>
+</map>

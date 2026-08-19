@@ -1,0 +1,16 @@
+<map id="bomberman::World::advanceToNextLevel" name="bomberman::World::advanceToNextLevel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,215,109"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a91ce6f7acf2e544cc09d83c8f0c056c1" title=" " alt="" coords="263,77,487,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,87,249,87,249,92,215,92"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="545,5,735,45"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="215,68,262,61,531,32,531,37,263,67,215,74"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1AbstractFactory.html#a902845eb67060c6e3b2e78f48ef81efa" title="Maakt een Character aan (Player of bot) op de gegeven positie." alt="" coords="269,127,480,167"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="204,107,269,121,268,126,202,112"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="428,74,542,46,543,51,429,79"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1AbstractFactory.html#a8d86ba58cf4e3516d65a49a7b9c2cae7" title="Maakt een Wall aan op de gegeven positie, breekbaar of niet." alt="" coords="535,69,745,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="487,87,521,87,521,92,487,92"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Random.html#ab1bc92e42f390dce5f4233e801a99f63" title="Geeft een willekeurig geheel getal terug, inclusief [min, max]." alt="" coords="555,133,725,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="434,99,487,112,549,127,548,133,486,117,432,105"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1Random.html#a52fb8b6134beae577f7dc6b2b5be0de5" title="Geeft de enige instantie van de Random singleton terug." alt="" coords="555,197,725,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="463,100,488,113,505,130,513,149,521,166,536,183,545,189,542,193,533,187,516,169,509,151,501,133,485,117,461,105"/>
+</map>

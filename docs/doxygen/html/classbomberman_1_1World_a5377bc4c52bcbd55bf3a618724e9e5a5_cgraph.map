@@ -1,0 +1,7 @@
+<map id="bomberman::World::findEscapeDirection" name="bomberman::World::findEscapeDirection">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,229,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a72cc57d304b4dafdfe3b67fd3f2e5d06" title=" " alt="" coords="277,13,497,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,23,263,23,263,28,230,28"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="545,5,736,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="498,23,532,23,532,28,498,28"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="bomberman::AbstractFactory" name="bomberman::AbstractFactory">
+<area shape="rect" id="Node000001" title="Abstract Factory interface waarmee World entities kan aanmaken zonder te weten hoe hun (SFML&#45;)View er..." alt="" coords="5,5,208,171"/>
+<area shape="rect" id="Node000002" href="$classConcreteFactory.html" title="Concrete Factory: maakt logic&#45;entities aan EN koppelt er meteen (via het Observer&#45;patroon) de juiste ..." alt="" coords="18,219,195,504"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,184,109,218,104,218,104,184"/>
+</map>

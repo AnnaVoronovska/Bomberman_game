@@ -1,0 +1,5 @@
+<map id="bomberman::EntityModel::markForRemoval" name="bomberman::EntityModel::markForRemoval">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,192,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="240,5,397,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,23,226,23,226,28,192,28"/>
+</map>

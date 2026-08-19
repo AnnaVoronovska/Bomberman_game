@@ -1,0 +1,8 @@
+<map id="bomberman::World::placeBomb" name="bomberman::World::placeBomb">
+<area shape="rect" id="Node000001" title=" " alt="" coords="499,5,725,31"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,5,204,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="485,17,451,17,252,17,204,18,204,12,252,11,451,11,485,12"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a097a0b1b0a2f2d7b1172bcf8264b85d7" title=" " alt="" coords="252,26,451,66"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="485,34,451,38,451,33,485,29"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="238,36,204,32,205,27,239,31"/>
+</map>

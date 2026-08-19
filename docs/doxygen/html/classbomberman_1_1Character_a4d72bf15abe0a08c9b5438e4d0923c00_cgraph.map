@@ -1,0 +1,10 @@
+<map id="bomberman::Character::loseLife" name="bomberman::Character::loseLife">
+<area shape="rect" id="Node000001" title="Trekt 1 leven af (notify); bij 0 levens wordt automatisch die() aangeroepen." alt="" coords="5,49,177,89"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Character.html#a89533fb7bb3518858d65580f40b4e85a" title="Laat het character sterven: stuurt een notify, character stopt met bewegen/tekenen." alt="" coords="225,5,425,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,47,252,31,253,36,178,53"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="473,23,631,63"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="178,61,460,46,460,51,178,67"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Character.html#aca2168dfebc1c39fdf2da3be36bbf7c5" title=" " alt="" coords="239,106,411,146"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,86,230,100,229,105,173,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="426,27,460,30,459,36,425,32"/>
+</map>

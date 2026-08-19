@@ -1,0 +1,3 @@
+<map id="bomberman::AbstractFactory" name="bomberman::AbstractFactory">
+<area shape="rect" id="Node000001" title="Abstract Factory interface waarmee World entities kan aanmaken zonder te weten hoe hun (SFML&#45;)View er..." alt="" coords="5,5,208,171"/>
+</map>

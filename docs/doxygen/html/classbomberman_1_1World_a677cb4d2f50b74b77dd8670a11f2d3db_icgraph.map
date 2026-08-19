@@ -1,0 +1,56 @@
+<map id="bomberman::World::cellToWorld" name="bomberman::World::cellToWorld">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1392,255,1583,295"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#ab25a31dab23aa5c261845ca391c58f73" title=" " alt="" coords="822,5,1031,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1472,243,1454,200,1426,150,1389,102,1367,81,1343,64,1306,45,1267,31,1185,15,1105,10,1032,13,1032,8,1105,5,1186,9,1269,26,1308,40,1345,59,1371,77,1393,98,1431,147,1459,198,1477,241"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#a0067d2ade4c6c10bf7196962087e1dfa" title=" " alt="" coords="800,133,1053,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1434,251,1390,232,1343,216,1270,198,1194,184,1053,165,1054,160,1195,178,1271,193,1345,211,1392,227,1436,246"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1World.html#a91ce6f7acf2e544cc09d83c8f0c056c1" title=" " alt="" coords="1111,74,1335,99"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="1464,245,1413,181,1380,149,1343,121,1297,102,1299,97,1345,116,1383,145,1417,178,1468,242"/>
+<area shape="rect" id="Node000008" href="$classbomberman_1_1World.html#a98d9543653719bb1c2129947a7188eb0" title="Bouwt de arena op volgens de klassieke layout." alt="" coords="821,69,1033,109"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="1453,248,1403,209,1343,174,1286,156,1207,138,1032,108,1033,102,1208,133,1288,151,1345,170,1406,205,1456,243"/>
+<area shape="rect" id="Node000009" href="$classbomberman_1_1World.html#abb37c99ee46205ea60c893fe0b53b97d" title="Visitor&#45;patroon in actie: bouwt leesbare labels op van alle entiteiten (muur/bom/power&#45;up/character/d..." alt="" coords="1118,656,1327,696"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="1485,309,1473,377,1449,466,1431,513,1408,559,1380,601,1346,639,1318,658,1315,654,1342,635,1375,598,1403,556,1426,511,1444,464,1468,376,1480,308"/>
+<area shape="rect" id="Node000010" href="$classbomberman_1_1World.html#ab067f827d49a12dcf9adc0a15f65e898" title=" " alt="" coords="1114,477,1331,502"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="1453,305,1241,479,1238,474,1449,301"/>
+<area shape="rect" id="Node000013" href="$classbomberman_1_1World.html#aae09a15edd7c876773fb8a7fb68f24e0" title=" " alt="" coords="813,555,1040,581"/>
+<area shape="poly" id="edge23_Node000001_Node000013" title=" " alt="" coords="1479,309,1462,357,1435,414,1396,471,1372,496,1345,517,1310,537,1272,553,1192,573,1113,581,1040,582,1040,577,1112,576,1191,568,1270,548,1308,532,1343,512,1369,492,1392,467,1430,411,1457,355,1474,307"/>
+<area shape="rect" id="Node000014" href="$classbomberman_1_1World.html#ac7c08441a7925be801817e92be21bc91" title=" " alt="" coords="1101,225,1344,265"/>
+<area shape="poly" id="edge21_Node000001_Node000014" title=" " alt="" coords="1378,265,1344,261,1345,256,1379,260"/>
+<area shape="rect" id="Node000015" href="$classbomberman_1_1World.html#af2cfda92a91655411325fe42f263fec8" title=" " alt="" coords="252,555,460,595"/>
+<area shape="poly" id="edge24_Node000001_Node000015" title=" " alt="" coords="1485,309,1472,371,1448,448,1430,487,1407,525,1379,558,1345,586,1314,602,1275,615,1178,632,1061,638,932,636,800,629,672,618,460,592,461,587,673,612,801,624,933,631,1061,633,1177,626,1274,610,1312,597,1343,582,1375,555,1402,522,1425,485,1443,446,1467,370,1479,308"/>
+<area shape="rect" id="Node000016" href="$classbomberman_1_1World.html#a72cc57d304b4dafdfe3b67fd3f2e5d06" title=" " alt="" coords="1113,290,1333,315"/>
+<area shape="poly" id="edge26_Node000001_Node000016" title=" " alt="" coords="1378,289,1333,294,1333,288,1378,284"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,415,204,441"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="809,33,685,48,614,60,540,77,465,99,391,127,319,162,254,203,225,227,200,255,159,317,130,374,113,416,108,414,125,372,154,314,196,252,222,224,250,199,317,157,388,122,463,94,539,72,613,55,684,42,808,28"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#a62005bf15a82d33f456309a1e05e346a" title=" " alt="" coords="508,173,752,198"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="807,178,752,184,752,178,807,172"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="696,168,799,155,800,161,697,173"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1World.html#a3ce2c9ecd9a14f9b666552baff8ba611" title=" " alt="" coords="257,213,455,253"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="544,203,456,219,455,213,543,198"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="320,264,124,417,121,413,317,260"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="1147,74,1023,48,1024,43,1148,69"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="1097,90,1033,91,1033,86,1097,85"/>
+<area shape="rect" id="Node000011" href="$classbomberman_1_1World.html#a56bd2a8ef459947b72e0b78a0054012e" title=" " alt="" coords="823,440,1030,480"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="1100,480,1030,473,1030,468,1100,475"/>
+<area shape="rect" id="Node000012" href="$classbomberman_1_1World.html#a097a0b1b0a2f2d7b1172bcf8264b85d7" title=" " alt="" coords="531,408,729,448"/>
+<area shape="poly" id="edge20_Node000010_Node000012" title=" " alt="" coords="1101,505,956,509,877,505,799,495,745,477,678,451,680,446,747,472,801,489,877,499,956,503,1100,499"/>
+<area shape="poly" id="edge17_Node000010_Node000013" title=" " alt="" coords="1160,508,1102,524,1054,539,981,558,979,553,1053,533,1101,519,1158,503"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="810,450,729,441,730,436,810,445"/>
+<area shape="poly" id="edge16_Node000012_Node000003" title=" " alt="" coords="517,431,204,431,204,425,517,425"/>
+<area shape="poly" id="edge18_Node000013_Node000003" title=" " alt="" coords="838,556,180,443,181,438,838,550"/>
+<area shape="poly" id="edge19_Node000013_Node000012" title=" " alt="" coords="830,553,799,538,782,524,773,509,765,494,750,479,724,463,696,450,698,446,727,459,754,475,769,491,778,506,786,520,801,534,832,549"/>
+<area shape="poly" id="edge22_Node000014_Node000004" title=" " alt="" coords="1141,224,1100,209,1052,188,1014,176,1015,171,1054,183,1102,204,1143,219"/>
+<area shape="poly" id="edge25_Node000015_Node000003" title=" " alt="" coords="307,550,251,517,126,443,129,438,253,512,310,545"/>
+<area shape="poly" id="edge27_Node000016_Node000004" title=" " alt="" coords="1110,286,1100,279,1088,268,1081,256,1075,232,1068,209,1062,198,1052,187,1033,176,1036,171,1055,183,1066,195,1073,207,1080,231,1086,254,1092,265,1103,275,1113,282"/>
+<area shape="poly" id="edge32_Node000016_Node000011" title=" " alt="" coords="1200,327,1137,379,1097,407,1054,430,1024,442,1022,437,1052,426,1094,402,1134,375,1196,323"/>
+<area shape="poly" id="edge35_Node000016_Node000012" title=" " alt="" coords="1145,290,1071,281,984,277,891,282,845,290,801,303,755,324,713,353,677,383,651,410,647,406,674,379,710,349,752,319,799,297,844,285,890,277,984,271,1072,276,1146,285"/>
+<area shape="rect" id="Node000017" href="$classbomberman_1_1World.html#a952a3dc95c99ae04c55324b46a62a59c" title=" " alt="" coords="828,312,1025,352"/>
+<area shape="poly" id="edge28_Node000016_Node000017" title=" " alt="" coords="1099,318,1026,325,1025,320,1099,312"/>
+<area shape="rect" id="Node000018" href="$classbomberman_1_1World.html#a5377bc4c52bcbd55bf3a618724e9e5a5" title=" " alt="" coords="815,376,1039,416"/>
+<area shape="poly" id="edge30_Node000016_Node000018" title=" " alt="" coords="1178,323,1054,367,1012,379,1011,373,1053,361,1176,318"/>
+<area shape="rect" id="Node000019" href="$classbomberman_1_1World.html#adc6991ff2d55e937ae11168c1a26add3" title=" " alt="" coords="827,197,1026,237"/>
+<area shape="poly" id="edge33_Node000016_Node000019" title=" " alt="" coords="1135,290,1100,280,1052,258,997,240,999,235,1054,254,1102,275,1137,284"/>
+<area shape="poly" id="edge29_Node000017_Node000012" title=" " alt="" coords="829,358,801,367,681,410,679,405,799,361,828,353"/>
+<area shape="poly" id="edge31_Node000018_Node000012" title=" " alt="" coords="801,412,730,420,729,415,801,407"/>
+<area shape="poly" id="edge34_Node000019_Node000005" title=" " alt="" coords="813,208,748,201,748,195,814,203"/>
+</map>

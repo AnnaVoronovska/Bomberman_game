@@ -13,13 +13,19 @@
 // voor hoe je dit vervangt door een echte sprite sheet.
 // ============================================================
 
+/**
+ * @brief Basisklasse (View) voor de grafische weergave van een EntityModel.
+ * Abonneert zich via het Observer-patroon op zijn bijhorend Model.
+ */
 class EntityView : public bomberman::Observer {
 public:
     EntityView(std::weak_ptr<bomberman::EntityModel> model, const bomberman::Camera& camera);
     virtual ~EntityView() = default;
 
     void onNotify(const bomberman::Event& event) override;
+    /// @brief Tekent deze entiteit op het venster; deltaTime dient voor animatietiming.
     virtual void draw(sf::RenderWindow& window, double deltaTime) = 0;
+    /// @brief Geeft terug of het onderliggende Model verdwenen is en de View opgeruimd mag worden.
     virtual bool isExpired() const;
 
 protected:
@@ -28,6 +34,7 @@ protected:
     bool removed_ = false;
 };
 
+/// @brief View voor een Wall: tekent een breekbare of onverwoestbare muurtegel.
 class WallView : public EntityView {
 public:
     WallView(std::weak_ptr<bomberman::Wall> model, const bomberman::Camera& camera, const sf::Texture& texture);
@@ -38,6 +45,7 @@ private:
     const sf::Texture* texture_ = nullptr;
 };
 
+/// @brief View voor een PowerUp: tekent het sprite dat bij het power-up type hoort.
 class PowerUpView : public EntityView {
 public:
     PowerUpView(std::weak_ptr<bomberman::PowerUp> model, const bomberman::Camera& camera, const sf::Texture& texture);
@@ -48,6 +56,7 @@ private:
     const sf::Texture* texture_ = nullptr;
 };
 
+/// @brief View voor een Door: tekent de verborgen deur met een pulserend effect.
 class DoorView : public EntityView {
 public:
     DoorView(std::weak_ptr<bomberman::Door> model, const bomberman::Camera& camera);
@@ -58,6 +67,7 @@ private:
     double pulse_ = 0.0;
 };
 
+/// @brief View voor een Bomb: tekent het aftellende bom-sprite en de explosie-animatie.
 class BombView : public EntityView {
 public:
     BombView(std::weak_ptr<bomberman::Bomb> model, const bomberman::Camera& camera, const sf::Texture& texture);
@@ -76,6 +86,10 @@ private:
     bomberman::Vec2 lastSize_;
 };
 
+/**
+ * @brief View voor een Character (Player of bot): tekent de richtingsgebonden
+ * loop-animatie en de death-/victory-animaties.
+ */
 class CharacterView : public EntityView {
 public:
     // rowBase/colBase = linkerbovenhoek (in tegels) van het "down"-frame van deze skin

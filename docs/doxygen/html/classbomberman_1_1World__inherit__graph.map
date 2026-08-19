@@ -1,0 +1,5 @@
+<map id="bomberman::World" name="bomberman::World">
+<area shape="rect" id="Node000001" title="World is de &quot;Controller&quot; uit MVC: bezit alle entity&#45;Models en regisseert de volledige spellogica (spa..." alt="" coords="5,159,204,864"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Subject.html" title="Subject&#45;kant van het patroon: houdt Observers bij en stuurt hen Events." alt="" coords="30,5,179,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,125,107,159,102,159,102,125"/>
+</map>

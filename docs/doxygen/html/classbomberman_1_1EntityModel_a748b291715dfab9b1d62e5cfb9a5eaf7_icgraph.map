@@ -1,0 +1,11 @@
+<map id="bomberman::EntityModel::markForRemoval" name="bomberman::EntityModel::markForRemoval">
+<area shape="rect" id="Node000001" title=" " alt="" coords="508,63,695,103"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1PowerUp.html#a34f9cad7c8dc3e6a81eeb8d6bf2b3a74" title="Raapt deze power&#45;up op: stuurt een notify en markeert hem voor verwijdering." alt="" coords="273,5,440,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="501,62,440,47,441,42,503,57"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Wall.html#a37323be1b2e0875816a6b59878388186" title="Vernielt deze muur: stuurt een notify en markeert hem voor verwijdering." alt="" coords="259,70,454,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="494,85,454,85,454,80,494,80"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Bomb.html#a5179d0be4ec867d0fedefe073a35bee1" title="Markeert de bom als ontploft (visueel/logisch signaal)." alt="" coords="253,119,460,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="495,107,421,122,420,117,494,102"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Bomb.html#a0c7984730425537793b45ab1e916284b" title="Werkt de entity bij met het verstreken deltaTime sinds de vorige tick." alt="" coords="5,119,205,145"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="239,135,206,135,206,129,239,129"/>
+</map>

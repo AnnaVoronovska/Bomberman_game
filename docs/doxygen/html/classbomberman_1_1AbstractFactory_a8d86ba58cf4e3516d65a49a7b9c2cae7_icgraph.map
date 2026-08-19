@@ -1,0 +1,11 @@
+<map id="bomberman::AbstractFactory::createWall" name="bomberman::AbstractFactory::createWall">
+<area shape="rect" id="Node000001" title="Maakt een Wall aan op de gegeven positie, breekbaar of niet." alt="" coords="784,37,995,77"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a91ce6f7acf2e544cc09d83c8f0c056c1" title=" " alt="" coords="512,45,736,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="770,60,736,60,736,55,770,55"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#ab25a31dab23aa5c261845ca391c58f73" title=" " alt="" coords="253,5,463,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="505,46,462,41,463,35,505,40"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#a98d9543653719bb1c2129947a7188eb0" title="Bouwt de arena op volgens de klassieke layout." alt="" coords="252,69,464,109"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="505,74,464,79,464,74,504,69"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,13,204,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="240,28,204,28,204,23,240,23"/>
+</map>

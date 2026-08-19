@@ -1,0 +1,12 @@
+<map id="bomberman::AbstractFactory::createDoor" name="bomberman::AbstractFactory::createDoor">
+<area shape="rect" id="Node000001" title="Maakt een Door aan op de gegeven positie." alt="" coords="1092,5,1303,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a0067d2ade4c6c10bf7196962087e1dfa" title=" " alt="" coords="791,5,1044,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1078,28,1044,28,1044,23,1078,23"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a62005bf15a82d33f456309a1e05e346a" title=" " alt="" coords="499,13,743,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="777,37,743,37,743,32,777,32"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="757,14,790,14,790,19,757,19"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#a3ce2c9ecd9a14f9b666552baff8ba611" title=" " alt="" coords="252,5,451,45"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="485,28,451,28,451,23,485,23"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,13,204,38"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="bomberman::Bomb::update" name="bomberman::Bomb::update">
+<area shape="rect" id="Node000001" title="Werkt de entity bij met het verstreken deltaTime sinds de vorige tick." alt="" coords="5,42,205,67"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Bomb.html#a5179d0be4ec867d0fedefe073a35bee1" title="Markeert de bom als ontploft (visueel/logisch signaal)." alt="" coords="253,42,460,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,52,239,52,239,57,206,57"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1EntityModel.html#a748b291715dfab9b1d62e5cfb9a5eaf7" title=" " alt="" coords="508,5,695,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="460,40,494,36,494,41,461,45"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="743,35,900,75"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="460,54,508,55,695,55,729,54,729,59,695,60,508,60,460,59"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="695,35,729,40,729,45,694,40"/>
+</map>

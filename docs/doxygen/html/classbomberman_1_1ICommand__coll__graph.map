@@ -1,0 +1,3 @@
+<map id="bomberman::ICommand" name="bomberman::ICommand">
+<area shape="rect" id="Node000001" title="Command&#45;interface: elke concrete command weet hoe hij zichzelf op een World uitvoert,..." alt="" coords="5,5,177,111"/>
+</map>

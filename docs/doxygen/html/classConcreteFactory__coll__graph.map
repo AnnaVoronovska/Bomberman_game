@@ -1,0 +1,7 @@
+<map id="ConcreteFactory" name="ConcreteFactory">
+<area shape="rect" id="Node000001" title="Concrete Factory: maakt logic&#45;entities aan EN koppelt er meteen (via het Observer&#45;patroon) de juiste ..." alt="" coords="121,233,298,499"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1AbstractFactory.html" title="Abstract Factory interface waarmee World entities kan aanmaken zonder te weten hoe hun (SFML&#45;)View er..." alt="" coords="5,5,208,171"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,183,163,232,158,234,139,184"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Camera.html" title="Projecteert genormaliseerde wereldcoördinaten ([&#45;1,1] x [&#45;1,1]) naar pixelcoördinaten op het venster...." alt="" coords="232,25,392,151"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="292,152,267,219,262,217,287,150"/>
+</map>

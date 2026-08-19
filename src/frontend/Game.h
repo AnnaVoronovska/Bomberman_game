@@ -14,17 +14,27 @@
 // spelregels - dat hoort allemaal bij World.
 // ============================================================
 
+/**
+ * @brief Representatie-laag: bezit het SFML-venster, draait de hoofdlus en
+ * vertaalt toetsenbordinput naar acties in de World. Bevat zelf GEEN
+ * spelregels - dat hoort allemaal bij World.
+ */
 class Game {
 public:
     Game();
+    /// @brief Start en draait de volledige hoofdlus van het spel tot het venster sluit.
     void run();
 
 private:
     enum class State { StartScreen, Playing, GameOver };
 
+    /// @brief Verwerkt SFML-events (toetsenbord, venster sluiten, ...) voor deze frame.
     void processInput();
+    /// @brief Werkt de spellogica (World) en timers bij met het gegeven deltaTime.
     void update(double dt);
+    /// @brief Tekent het huidige frame (arena, HUD, overlays, ...) op het venster.
     void render(double dt);
+    /// @brief Zet World/Score/Factory terug in beginstaat voor een nieuwe game.
     void startNewGame();
 
     sf::RenderWindow window_;

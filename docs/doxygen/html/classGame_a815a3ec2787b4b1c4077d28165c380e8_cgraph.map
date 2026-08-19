@@ -1,0 +1,7 @@
+<map id="Game::processInput" name="Game::processInput">
+<area shape="rect" id="Node000001" title="Verwerkt SFML&#45;events (toetsenbord, venster sluiten, ...) voor deze frame." alt="" coords="5,42,157,67"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1CommandHistory.html#a1a857a1409eb8ae2f9270286b13aa4e6" title="Voegt een uitgevoerde command toe aan de geschiedenis." alt="" coords="205,5,428,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,43,191,38,192,44,158,48"/>
+<area shape="rect" id="Node000003" href="$classGame.html#abf0598736d0752b99711691b0ef8203a" title="Zet World/Score/Factory terug in beginstaat voor een nieuwe game." alt="" coords="233,70,400,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,61,220,69,220,74,157,66"/>
+</map>

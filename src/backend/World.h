@@ -25,11 +25,18 @@ constexpr int GRID_ROWS = 11;
 constexpr double LEVEL_TIME_SECONDS = 180.0; // 3 minuten per level
 constexpr int MAX_LEVEL = 2; // de deur op dit level wint het spel i.p.v. door te gaan naar een volgend level
 
+/**
+ * @brief World is de "Controller" uit MVC: bezit alle entity-Models en
+ * regisseert de volledige spellogica (spawnen, botsing, bom-explosies,
+ * eenvoudige bot-AI, win/verlies).
+ */
 class World : public Subject {
 public:
     World(AbstractFactory& factory, Score& score);
 
+    /// @brief Bouwt de arena op volgens de klassieke layout.
     void generateArena(); // bouwt de arena volgens de klassieke layout
+    /// @brief Werkt de volledige spelwereld één tick bij (deltaTime seconden verder).
     void update(double deltaTime);
 
     bool isGameOver() const { return gameOver_; }
@@ -46,13 +53,16 @@ public:
     // representatie-laag "consumeert" dit om de "STAGE X"-banner te tonen.
     bool consumeStageAdvanced();
 
-    // Input van de representatie-laag wordt hier vertaald naar logica.
+    /// @brief Zet de bewegingsrichting van de speler (input van representatie-laag).
     void setPlayerDirection(Direction dir);
+    /// @brief Vraagt aan om een bom te plaatsen op de huidige positie van de speler.
     void requestPlayerBomb();
 
-    // Visitor-patroon in actie: bouwt leesbare labels op van alle entiteiten
-    // (muur/bom/power-up/character/deur) die zich op deze cel bevinden.
-    // Bedoeld voor een debug-overlay/tooltip in de representatie-laag.
+    /**
+     * @brief Visitor-patroon in actie: bouwt leesbare labels op van alle entiteiten
+     * (muur/bom/power-up/character/deur) die zich op deze cel bevinden.
+     * Bedoeld voor een debug-overlay/tooltip in de representatie-laag.
+     */
     std::vector<std::string> describeEntitiesAt(int col, int row) const;
 
 private:

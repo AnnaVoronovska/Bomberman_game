@@ -1,0 +1,11 @@
+<map id="bomberman::World" name="bomberman::World">
+<area shape="rect" id="Node000001" title="World is de &quot;Controller&quot; uit MVC: bezit alle entity&#45;Models en regisseert de volledige spellogica (spa..." alt="" coords="181,448,379,1213"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Subject.html" title="Subject&#45;kant van het patroon: houdt Observers bij en stuurt hen Events." alt="" coords="5,210,155,315"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,327,183,547,178,549,100,329"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1AbstractFactory.html" title="Abstract Factory interface waarmee World entities kan aanmaken zonder te weten hoe hun (SFML&#45;)View er..." alt="" coords="179,180,381,345"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="283,346,283,432,277,432,277,346"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Score.html" title="Observer die luistert naar spel&#45;events en er score&#45;aanpassingen van maakt. Beheert ook de top&#45;5 hoogs..." alt="" coords="406,140,562,385"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="443,387,387,540,382,538,438,385"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Observer.html" title="Observer&#45;kant van het patroon: ontvangt Events van een Subject." alt="" coords="404,5,564,91"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="487,104,487,140,481,140,481,104"/>
+</map>

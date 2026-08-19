@@ -1,0 +1,5 @@
+<map id="bomberman::World::wallAtCell" name="bomberman::World::wallAtCell">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,225,38"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="273,5,464,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,23,260,23,260,28,226,28"/>
+</map>

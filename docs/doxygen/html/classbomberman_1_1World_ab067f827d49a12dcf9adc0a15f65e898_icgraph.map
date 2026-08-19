@@ -1,0 +1,14 @@
+<map id="bomberman::World::isBombAt" name="bomberman::World::isBombAt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="773,70,991,95"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a56bd2a8ef459947b72e0b78a0054012e" title=" " alt="" coords="509,5,715,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="808,70,706,48,707,43,809,65"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a097a0b1b0a2f2d7b1172bcf8264b85d7" title=" " alt="" coords="252,59,451,99"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="760,84,451,82,451,77,760,79"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#aae09a15edd7c876773fb8a7fb68f24e0" title=" " alt="" coords="499,121,725,146"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="801,101,681,123,680,118,800,95"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="501,51,450,61,449,56,500,46"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,95,204,121"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="239,95,205,99,204,94,238,89"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="537,120,447,101,448,96,538,115"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="485,130,204,116,204,110,485,124"/>
+</map>

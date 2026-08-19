@@ -1,0 +1,11 @@
+<map id="Game::startNewGame" name="Game::startNewGame">
+<area shape="rect" id="Node000001" title="Zet World/Score/Factory terug in beginstaat voor een nieuwe game." alt="" coords="447,31,613,56"/>
+<area shape="rect" id="Node000002" href="$classGame.html#ad59df6562a58a614fda24622d3715b65" title=" " alt="" coords="269,5,377,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="433,34,377,27,378,22,434,29"/>
+<area shape="rect" id="Node000003" href="$classGame.html#a815a3ec2787b4b1c4077d28165c380e8" title="Verwerkt SFML&#45;events (toetsenbord, venster sluiten, ...) voor deze frame." alt="" coords="247,55,399,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="433,57,399,61,398,56,433,52"/>
+<area shape="rect" id="Node000004" href="$classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="Start en draait de volledige hoofdlus van het spel tot het venster sluit." alt="" coords="108,55,199,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="233,70,199,70,199,65,233,65"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,55,60,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,70,60,70,60,65,94,65"/>
+</map>

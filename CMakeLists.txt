@@ -28,3 +28,15 @@ add_executable(bomberman
 )
 target_include_directories(bomberman PRIVATE src/frontend)
 target_link_libraries(bomberman PRIVATE bomberman_logic sfml-graphics sfml-window sfml-system sfml-audio)
+
+
+# ---- Doxygen documentatie: 'cmake --build . --target doxygen' ----
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+    add_custom_target(doxygen
+            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_SOURCE_DIR}/Doxyfile
+            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+            COMMENT "Doxygen documentatie genereren in docs/doxygen/html"
+            VERBATIM
+    )
+endif()

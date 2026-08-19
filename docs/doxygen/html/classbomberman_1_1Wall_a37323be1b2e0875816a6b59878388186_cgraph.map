@@ -1,0 +1,8 @@
+<map id="bomberman::Wall::destroy" name="bomberman::Wall::destroy">
+<area shape="rect" id="Node000001" title="Vernielt deze muur: stuurt een notify en markeert hem voor verwijdering." alt="" coords="5,42,200,67"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1EntityModel.html#a748b291715dfab9b1d62e5cfb9a5eaf7" title=" " alt="" coords="248,5,435,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,40,234,36,235,41,201,45"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="483,35,640,75"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="200,54,248,55,435,55,469,54,469,59,435,60,248,60,200,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="435,35,469,40,469,45,434,40"/>
+</map>

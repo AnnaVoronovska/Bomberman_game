@@ -1,0 +1,7 @@
+<map id="PowerUpView::draw" name="PowerUpView::draw">
+<area shape="rect" id="Node000001" title="Tekent deze entiteit op het venster; deltaTime dient voor animatietiming." alt="" coords="5,45,156,70"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Camera.html#a1c52308ddd4996a4a84d65798edba6ff" title="Zet een wereldpositie om naar een pixelpositie op het scherm." alt="" coords="204,5,372,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,43,190,38,191,43,157,48"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Camera.html#a6c93412fbf1528970e2006a3dc02b614" title="Zet een wereldgrootte om naar een pixelgrootte (voor sprite&#45;dimensies)." alt="" coords="204,69,372,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,66,191,72,190,77,156,72"/>
+</map>

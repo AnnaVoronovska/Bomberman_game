@@ -1,0 +1,5 @@
+<map id="bomberman::Score" name="bomberman::Score">
+<area shape="rect" id="Node000001" title="Observer die luistert naar spel&#45;events en er score&#45;aanpassingen van maakt. Beheert ook de top&#45;5 hoogs..." alt="" coords="7,139,163,384"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Observer.html" title="Observer&#45;kant van het patroon: ontvangt Events van een Subject." alt="" coords="5,5,165,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,104,88,138,83,138,83,104"/>
+</map>

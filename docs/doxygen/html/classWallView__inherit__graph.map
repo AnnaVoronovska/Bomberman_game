@@ -1,0 +1,7 @@
+<map id="WallView" name="WallView">
+<area shape="rect" id="Node000001" title="View voor een Wall: tekent een breekbare of onverwoestbare muurtegel." alt="" coords="36,372,135,477"/>
+<area shape="rect" id="Node000002" href="$classEntityView.html" title="Basisklasse (View) voor de grafische weergave van een EntityModel. Abonneert zich via het Observer&#45;pa..." alt="" coords="25,139,145,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="88,338,88,372,83,372,83,338"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Observer.html" title="Observer&#45;kant van het patroon: ontvangt Events van een Subject." alt="" coords="5,5,165,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="88,104,88,138,83,138,83,104"/>
+</map>

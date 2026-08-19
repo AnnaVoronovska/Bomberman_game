@@ -1,0 +1,11 @@
+<map id="bomberman::World::buildArena" name="bomberman::World::buildArena">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,229,134"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="287,5,478,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,106,276,55,299,47,301,52,278,60,149,111"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1AbstractFactory.html#a8d86ba58cf4e3516d65a49a7b9c2cae7" title="Maakt een Wall aan op de gegeven positie, breekbaar of niet." alt="" coords="277,69,488,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,106,263,101,264,106,223,111"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Random.html#ab1bc92e42f390dce5f4233e801a99f63" title="Geeft een willekeurig geheel getal terug, inclusief [min, max]." alt="" coords="297,133,468,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="223,131,284,139,283,144,223,137"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Random.html#a52fb8b6134beae577f7dc6b2b5be0de5" title="Geeft de enige instantie van de Random singleton terug." alt="" coords="297,197,468,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="149,132,278,183,301,191,299,196,276,188,147,137"/>
+</map>

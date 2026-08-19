@@ -1,0 +1,8 @@
+<map id="bomberman::Bomb::explode" name="bomberman::Bomb::explode">
+<area shape="rect" id="Node000001" title="Markeert de bom als ontploft (visueel/logisch signaal)." alt="" coords="5,42,212,67"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1EntityModel.html#a748b291715dfab9b1d62e5cfb9a5eaf7" title=" " alt="" coords="260,5,447,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,40,246,36,246,41,213,45"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Subject.html#aef62298fed1dea2b1fe2f598ee8d4d9a" title="Stuurt een Event naar alle nog levende Observers en ruimt vervallen Observers op." alt="" coords="495,35,652,75"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="212,54,260,55,447,55,481,54,481,59,447,60,260,60,212,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="447,35,481,40,481,45,446,40"/>
+</map>

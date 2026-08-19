@@ -1,0 +1,5 @@
+<map id="bomberman::PlaceBombCommand" name="bomberman::PlaceBombCommand">
+<area shape="rect" id="Node000001" title="Vraagt aan om een bom te plaatsen op de huidige positie van de speler. De effectieve validatie (canPl..." alt="" coords="5,159,247,244"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1ICommand.html" title="Command&#45;interface: elke concrete command weet hoe hij zichzelf op een World uitvoert,..." alt="" coords="40,5,212,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,124,129,159,123,159,123,124"/>
+</map>

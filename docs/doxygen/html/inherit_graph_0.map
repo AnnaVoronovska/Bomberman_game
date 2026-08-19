@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classbomberman_1_1AbstractFactory.html" title="Abstract Factory interface waarmee World entities kan aanmaken zonder te weten hoe hun (SFML&#45;)View er..." alt="" coords="5,5,216,31"/>
+<area shape="rect" id="Node000001" href="$classConcreteFactory.html" title="Concrete Factory: maakt logic&#45;entities aan EN koppelt er meteen (via het Observer&#45;patroon) de juiste ..." alt="" coords="264,5,391,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="230,15,264,15,264,21,230,21"/>
+</map>

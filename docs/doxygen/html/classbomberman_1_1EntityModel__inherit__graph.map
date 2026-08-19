@@ -1,0 +1,15 @@
+<map id="bomberman::EntityModel" name="bomberman::EntityModel">
+<area shape="rect" id="Node000001" title="Basisklasse (Model) voor elke spel&#45;entiteit. Erft van Subject zodat Views zich via het Observer&#45;patro..." alt="" coords="419,159,597,444"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Bomb.html" title="Een geplaatste bom die na een lonttijd ontploft in een kruispatroon." alt="" coords="5,552,187,897"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="408,348,355,375,300,409,248,448,201,494,179,522,160,553,155,550,175,519,197,490,244,444,297,404,353,370,405,343"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Character.html" title="Een speelbaar of bot&#45;gestuurd character (Player of vijand)." alt="" coords="211,492,418,957"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="440,458,421,499,416,497,435,456"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Door.html" title=" " alt="" coords="442,682,574,767"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="511,458,511,682,505,682,505,458"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1PowerUp.html" title="Een oprapbare power&#45;up die een character een permanente stat&#45;boost geeft." alt="" coords="598,662,757,787"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="575,456,589,491,656,661,651,663,584,493,570,458"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1Wall.html" title="Een muurblok in de arena, breekbaar of onverwoestbaar." alt="" coords="781,662,910,787"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="611,353,653,380,696,412,736,449,771,490,796,532,815,576,838,661,833,662,810,578,792,534,767,494,732,453,692,417,650,385,608,357"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Subject.html" title="Subject&#45;kant van het patroon: houdt Observers bij en stuurt hen Events." alt="" coords="433,5,583,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="511,125,511,159,505,159,505,125"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classbomberman_1_1ICommand.html" title="Command&#45;interface: elke concrete command weet hoe hij zichzelf op een World uitvoert,..." alt="" coords="5,31,185,56"/>
+<area shape="rect" id="Node000001" href="$classbomberman_1_1MoveCommand.html" title="Verandert de bewegingsrichting van de speler (Direction::None = stilstaan)." alt="" coords="252,5,464,31"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="199,31,251,26,252,31,199,36"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1PlaceBombCommand.html" title="Vraagt aan om een bom te plaatsen op de huidige positie van de speler. De effectieve validatie (canPl..." alt="" coords="233,55,483,80"/>
+<area shape="poly" id="edge5_Node000000_Node000002" title=" " alt="" coords="199,50,233,53,233,59,199,55"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="bomberman::Stopwatch::tick" name="bomberman::Stopwatch::tick">
+<area shape="rect" id="Node000001" title="Registreert een nieuwe tick; moet één keer per frame aangeroepen worden." alt="" coords="247,5,424,45"/>
+<area shape="rect" id="Node000002" href="$classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa" title="Start en draait de volledige hoofdlus van het spel tot het venster sluit." alt="" coords="108,13,199,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,28,199,28,199,23,233,23"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>

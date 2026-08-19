@@ -1,0 +1,10 @@
+<map id="bomberman::AbstractFactory::createBomb" name="bomberman::AbstractFactory::createBomb">
+<area shape="rect" id="Node000001" title="Maakt een Bomb aan op de gegeven positie met gegeven radius en eigenaar." alt="" coords="773,5,984,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#aae09a15edd7c876773fb8a7fb68f24e0" title=" " alt="" coords="499,13,725,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="759,28,726,28,726,23,759,23"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,13,204,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="485,25,451,24,252,24,204,25,204,20,252,19,451,19,485,19"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#a097a0b1b0a2f2d7b1172bcf8264b85d7" title=" " alt="" coords="252,33,451,73"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="485,42,451,45,451,40,485,36"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="238,43,204,39,205,34,239,38"/>
+</map>

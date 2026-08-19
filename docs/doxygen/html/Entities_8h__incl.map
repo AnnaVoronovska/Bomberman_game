@@ -1,0 +1,22 @@
+<map id="src/backend/Entities.h" name="src/backend/Entities.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="293,5,457,31"/>
+<area shape="rect" id="Node000002" href="$Core_8h.html" title=" " alt="" coords="163,79,227,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="347,33,238,76,236,71,345,28"/>
+<area shape="rect" id="Node000006" href="$Observer_8h.html" title=" " alt="" coords="371,79,463,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="384,30,406,66,401,68,379,32"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="301,152,379,177"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="374,31,363,79,348,139,343,138,357,78,369,30"/>
+<area shape="rect" id="Node000009" href="$Visitor_8h.html" title=" " alt="" coords="488,79,563,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="400,28,489,70,487,75,398,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,91,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,106,85,148,83,144,170,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="115,152,181,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="189,106,165,142,161,139,185,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="205,152,277,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="205,103,228,139,224,142,200,106"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="407,106,365,144,361,141,403,102"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="403,152,466,177"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="423,104,431,138,426,140,418,105"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="496,152,555,177"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="528,104,528,138,523,138,523,104"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="BombView::onNotify" name="BombView::onNotify">
+<area shape="rect" id="Node000001" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="5,63,160,88"/>
+<area shape="rect" id="Node000002" href="$classEntityView.html#a305a496b5084fcf6d5f2b0b1c711be1b" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="215,5,369,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,60,231,32,233,37,131,65"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Camera.html#a1c52308ddd4996a4a84d65798edba6ff" title="Zet een wereldpositie om naar een pixelpositie op het scherm." alt="" coords="208,55,376,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,73,194,73,194,78,160,78"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Camera.html#a6c93412fbf1528970e2006a3dc02b614" title="Zet een wereldgrootte om naar een pixelgrootte (voor sprite&#45;dimensies)." alt="" coords="208,119,376,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="126,86,214,113,212,118,125,91"/>
+</map>

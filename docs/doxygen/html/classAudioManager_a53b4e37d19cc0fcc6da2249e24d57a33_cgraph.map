@@ -1,0 +1,5 @@
+<map id="AudioManager::onNotify" name="AudioManager::onNotify">
+<area shape="rect" id="Node000001" title="Speelt het gepaste geluidseffect af op basis van het binnenkomende Event." alt="" coords="5,5,184,31"/>
+<area shape="rect" id="Node000002" href="$classAudioManager.html#aaddcfc7027b5ee9e610769720a1230bf" title=" " alt="" coords="232,5,384,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,15,218,15,218,21,184,21"/>
+</map>

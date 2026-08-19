@@ -1,0 +1,7 @@
+<map id="bomberman::World::describeEntitiesAt" name="bomberman::World::describeEntitiesAt">
+<area shape="rect" id="Node000001" title="Visitor&#45;patroon in actie: bouwt leesbare labels op van alle entiteiten (muur/bom/power&#45;up/character/d..." alt="" coords="5,37,215,77"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="279,5,470,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,42,265,36,266,41,215,47"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1EntityLabelVisitor.html#a54e8851b2b0a7141e6fc7e4e9fbf04eb" title=" " alt="" coords="263,69,487,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,67,249,71,249,77,215,73"/>
+</map>

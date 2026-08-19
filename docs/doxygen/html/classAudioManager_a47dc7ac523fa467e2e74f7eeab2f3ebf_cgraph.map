@@ -1,0 +1,5 @@
+<map id="AudioManager::playClickSound" name="AudioManager::playClickSound">
+<area shape="rect" id="Node000001" title="Wordt door Game aangeroepen zodra de &quot;Play&quot;&#45;knop op het startscherm ingedrukt wordt (geen World/Event..." alt="" coords="5,5,229,31"/>
+<area shape="rect" id="Node000002" href="$classAudioManager.html#aaddcfc7027b5ee9e610769720a1230bf" title=" " alt="" coords="277,5,429,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,15,263,15,263,21,230,21"/>
+</map>

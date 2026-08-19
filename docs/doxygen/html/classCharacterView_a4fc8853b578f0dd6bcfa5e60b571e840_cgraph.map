@@ -1,0 +1,5 @@
+<map id="CharacterView::onNotify" name="CharacterView::onNotify">
+<area shape="rect" id="Node000001" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="5,5,184,31"/>
+<area shape="rect" id="Node000002" href="$classEntityView.html#a305a496b5084fcf6d5f2b0b1c711be1b" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="232,5,387,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,15,218,15,218,21,184,21"/>
+</map>

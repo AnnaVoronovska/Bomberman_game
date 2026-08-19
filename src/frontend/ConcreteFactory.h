@@ -13,6 +13,10 @@
 // niet dat Views of geluid bestaan.
 // ============================================================
 
+/**
+ * @brief Concrete Factory: maakt logic-entities aan EN koppelt er meteen (via
+ * het Observer-patroon) de juiste SFML-View én de AudioManager aan.
+ */
 class ConcreteFactory : public bomberman::AbstractFactory {
 public:
     ConcreteFactory(const bomberman::Camera& camera, const sf::Texture& texture,
@@ -25,7 +29,9 @@ public:
     std::shared_ptr<bomberman::PowerUp> createPowerUp(bomberman::Vec2 position, bomberman::PowerUpType type) override;
     std::shared_ptr<bomberman::Door> createDoor(bomberman::Vec2 position) override;
 
+    /// @brief Tekent alle nog levende Views op het venster en werkt hun animaties bij.
     void drawAll(sf::RenderWindow& window, double deltaTime);
+    /// @brief Verwijdert Views waarvan het onderliggende Model niet meer bestaat.
     void removeExpiredViews();
 
 private:

@@ -1,0 +1,24 @@
+<map id="bomberman::Random::instance" name="bomberman::Random::instance">
+<area shape="rect" id="Node000001" title="Geeft de enige instantie van de Random singleton terug." alt="" coords="1393,99,1564,139"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a91ce6f7acf2e544cc09d83c8f0c056c1" title=" " alt="" coords="1112,42,1336,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1384,98,1275,70,1276,65,1386,93"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1World.html#ac7c08441a7925be801817e92be21bc91" title=" " alt="" coords="1103,99,1345,139"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="1380,121,1345,121,1345,116,1380,116"/>
+<area shape="rect" id="Node000010" href="$classbomberman_1_1World.html#a097a0b1b0a2f2d7b1172bcf8264b85d7" title=" " alt="" coords="532,156,731,196"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="1394,144,1346,153,1177,171,1008,180,855,182,731,181,731,176,855,177,1008,174,1177,165,1345,148,1393,139"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#ab25a31dab23aa5c261845ca391c58f73" title=" " alt="" coords="252,5,461,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1156,42,1054,25,893,15,731,13,462,21,461,16,731,8,893,10,1055,20,1157,36"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#a98d9543653719bb1c2129947a7188eb0" title="Bouwt de arena op volgens de klassieke layout." alt="" coords="822,35,1034,75"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1098,57,1034,57,1034,52,1098,52"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,106,204,131"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="290,53,141,108,139,103,288,48"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1World.html#a0067d2ade4c6c10bf7196962087e1dfa" title=" " alt="" coords="801,99,1055,139"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1089,121,1055,121,1055,116,1089,116"/>
+<area shape="rect" id="Node000008" href="$classbomberman_1_1World.html#a62005bf15a82d33f456309a1e05e346a" title=" " alt="" coords="509,106,753,131"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="788,130,754,130,754,125,788,125"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="767,107,801,107,801,112,767,112"/>
+<area shape="rect" id="Node000009" href="$classbomberman_1_1World.html#a3ce2c9ecd9a14f9b666552baff8ba611" title=" " alt="" coords="257,99,456,139"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="496,121,456,121,456,116,496,116"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="244,121,204,121,204,116,244,116"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="518,176,390,168,252,153,155,134,156,129,252,148,390,163,518,170"/>
+</map>

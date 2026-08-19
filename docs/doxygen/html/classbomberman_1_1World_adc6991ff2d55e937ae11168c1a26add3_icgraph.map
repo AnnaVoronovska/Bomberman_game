@@ -1,0 +1,12 @@
+<map id="bomberman::World::spreadExplosion" name="bomberman::World::spreadExplosion">
+<area shape="rect" id="Node000001" title=" " alt="" coords="845,5,1044,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a62005bf15a82d33f456309a1e05e346a" title=" " alt="" coords="553,13,797,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="832,28,798,28,798,23,832,23"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a0067d2ade4c6c10bf7196962087e1dfa" title=" " alt="" coords="252,5,505,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="539,37,506,37,506,32,539,32"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#a3ce2c9ecd9a14f9b666552baff8ba611" title=" " alt="" coords="279,69,478,109"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="603,44,472,72,471,67,602,38"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="519,14,553,14,553,19,519,19"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,77,204,102"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="265,92,204,92,204,87,265,87"/>
+</map>

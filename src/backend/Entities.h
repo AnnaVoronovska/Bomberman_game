@@ -22,11 +22,16 @@ constexpr double BOT_BOMB_COOLDOWN_SECONDS = 5.0;
 
 enum class Direction { Up, Down, Left, Right, None };
 
+/**
+ * @brief Basisklasse (Model) voor elke spel-entiteit. Erft van Subject zodat
+ * Views zich via het Observer-patroon op wijzigingen kunnen abonneren.
+ */
 class EntityModel : public Subject {
 public:
     EntityModel(Vec2 position, Vec2 size);
     virtual ~EntityModel() = default;
 
+    /// @brief Werkt de entity bij met het verstreken deltaTime sinds de vorige tick.
     virtual void update(double deltaTime) { (void)deltaTime; }
 
     const Vec2& getPosition() const { return position_; }
@@ -51,10 +56,12 @@ protected:
     bool markedForRemoval_ = false;
 };
 
+/// @brief Een muurblok in de arena, breekbaar of onverwoestbaar.
 class Wall : public EntityModel {
 public:
     Wall(Vec2 position, Vec2 size, bool destructible);
     bool isDestructible() const { return destructible_; }
+    /// @brief Vernielt deze muur: stuurt een notify en markeert hem voor verwijdering.
     void destroy(); // notify + markeren voor verwijdering
 
     void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
@@ -65,10 +72,12 @@ private:
 
 enum class PowerUpType { Fire, ExtraBomb, Skates, Poison, Star, Shield, Curse, Slow, Freeze, Skull };
 
+/// @brief Een oprapbare power-up die een character een permanente stat-boost geeft.
 class PowerUp : public EntityModel {
 public:
     PowerUp(Vec2 position, Vec2 size, PowerUpType type);
     PowerUpType getType() const { return type_; }
+    /// @brief Raapt deze power-up op: stuurt een notify en markeert hem voor verwijdering.
     void collect(); // notify + markeren voor verwijdering
 
     void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
@@ -89,6 +98,7 @@ public:
 
 class Character; // forward declaration: Bomb heeft enkel een niet-eigenaar referentie nodig
 
+/// @brief Een geplaatste bom die na een lonttijd ontploft in een kruispatroon.
 class Bomb : public EntityModel {
 public:
     Bomb(Vec2 position, Vec2 size, int radius, std::weak_ptr<Character> owner, double fuseTime = 2.0);
@@ -98,12 +108,15 @@ public:
     bool hasExploded() const { return exploded_; }
     std::weak_ptr<Character> getOwner() const { return owner_; }
 
+    /// @brief Markeert de bom als ontploft (visueel/logisch signaal).
     void explode(); // markeert de bom als ontploft (visueel/logisch signaal)
     double getTimer() const { return timer_; }
     double getFuseTime() const { return fuseTime_; }
 
-    // Voorkomt dat een kettingreactie dezelfde bom twee keer schade laat
-    // toebrengen: geeft exact één keer true terug.
+    /**
+     * @brief Voorkomt dat een kettingreactie dezelfde bom twee keer schade laat
+     * toebrengen: geeft exact één keer true terug.
+     */
     bool consumeDamageFlag();
 
     void accept(EntityVisitor& visitor) override { visitor.visit(*this); }
@@ -117,6 +130,7 @@ private:
     std::weak_ptr<Character> owner_; // bom is geen eigenaar van zijn plaatser
 };
 
+/// @brief Een speelbaar of bot-gestuurd character (Player of vijand).
 class Character : public EntityModel {
 public:
     Character(Vec2 position, Vec2 size, bool isBot);
@@ -141,15 +155,20 @@ public:
     }
     bool canPlaceBomb() const { return alive_ && bombsInPlay_ < maxBombs_ && bombCooldownRemaining_ <= 0.0; }
 
+    /// @brief Past het effect van de gegeven power-up permanent toe op dit character.
     void applyPowerUp(PowerUpType type);
 
     bool isAlive() const { return alive_; }
+    /// @brief Laat het character sterven: stuurt een notify, character stopt met bewegen/tekenen.
     void die(); // notify + character stopt met bewegen/tekenen
 
-    // Levens-systeem: contact met een vijand of een explosie kost 1 leven
-    // i.p.v. onmiddellijk te sterven. Na een treffer is het character
-    // eventjes onkwetsbaar zodat je niet meerdere levens in 1 frame verliest.
+    /**
+     * @brief Levens-systeem: contact met een vijand of een explosie kost 1 leven
+     * i.p.v. onmiddellijk te sterven. Na een treffer is het character
+     * eventjes onkwetsbaar zodat je niet meerdere levens in 1 frame verliest.
+     */
     int getLives() const { return lives_; }
+    /// @brief Trekt 1 leven af (notify); bij 0 levens wordt automatisch die() aangeroepen.
     void loseLife(); // -1 leven (notify); bij 0 levens -> die()
     bool isInvulnerable() const { return invulnerableTimer_ > 0.0; }
 

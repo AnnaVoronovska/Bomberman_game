@@ -1,0 +1,11 @@
+<map id="bomberman::World::maybeSpawnPowerUp" name="bomberman::World::maybeSpawnPowerUp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,248,141"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a677cb4d2f50b74b77dd8670a11f2d3db" title=" " alt="" coords="306,5,497,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,99,295,55,319,47,321,52,297,60,179,104"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1AbstractFactory.html#afba3e7b0f15586a3ac97c9a075b09d61" title="Maakt een PowerUp aan van het gegeven type op de gegeven positie." alt="" coords="296,69,507,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="248,105,282,100,283,106,248,110"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Random.html#ab1bc92e42f390dce5f4233e801a99f63" title="Geeft een willekeurig geheel getal terug, inclusief [min, max]." alt="" coords="316,133,487,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="248,133,303,139,302,144,248,138"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Random.html#a52fb8b6134beae577f7dc6b2b5be0de5" title="Geeft de enige instantie van de Random singleton terug." alt="" coords="316,197,487,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="179,139,297,183,321,191,319,196,295,188,177,144"/>
+</map>

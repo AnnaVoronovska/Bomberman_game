@@ -1,0 +1,7 @@
+<map id="bomberman::Character::isAlive" name="bomberman::Character::isAlive">
+<area shape="rect" id="Node000001" title=" " alt="" coords="508,5,680,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#af2cfda92a91655411325fe42f263fec8" title=" " alt="" coords="252,5,460,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="494,28,460,28,460,23,494,23"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,13,204,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>

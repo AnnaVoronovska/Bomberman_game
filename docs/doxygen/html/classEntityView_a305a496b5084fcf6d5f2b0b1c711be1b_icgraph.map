@@ -1,0 +1,7 @@
+<map id="EntityView::onNotify" name="EntityView::onNotify">
+<area shape="rect" id="Node000001" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="232,31,387,56"/>
+<area shape="rect" id="Node000002" href="$classBombView.html#a8cfdd903b18f1c051776735e3ab7dab8" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="17,5,172,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,35,172,30,172,24,218,30"/>
+<area shape="rect" id="Node000003" href="$classCharacterView.html#a4fc8853b578f0dd6bcfa5e60b571e840" title="Callback die wordt aangeroepen telkens het geobserveerde Subject een Event stuurt." alt="" coords="5,55,184,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,56,185,60,184,55,218,51"/>
+</map>

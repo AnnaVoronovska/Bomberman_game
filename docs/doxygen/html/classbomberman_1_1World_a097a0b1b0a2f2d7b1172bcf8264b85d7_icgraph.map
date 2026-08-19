@@ -1,0 +1,5 @@
+<map id="bomberman::World::updateBotAI" name="bomberman::World::updateBotAI">
+<area shape="rect" id="Node000001" title=" " alt="" coords="252,5,451,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,13,204,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>

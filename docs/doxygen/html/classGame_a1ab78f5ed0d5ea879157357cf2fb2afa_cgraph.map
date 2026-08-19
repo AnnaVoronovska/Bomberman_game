@@ -1,0 +1,19 @@
+<map id="Game::run" name="Game::run">
+<area shape="rect" id="Node000001" title="Start en draait de volledige hoofdlus van het spel tot het venster sluit." alt="" coords="5,159,96,185"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Stopwatch.html#ad6124d84fb3f17ce1ad8bd43529808ea" title="Geeft het aantal seconden sinds de vorige tick terug." alt="" coords="144,5,321,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,158,90,108,114,80,142,55,151,49,154,54,146,59,118,84,94,112,61,161"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Stopwatch.html#aebfe245fbc39187eeba3665dbc0e6e6a" title="Geeft de enige instantie van de Stopwatch singleton terug." alt="" coords="144,69,321,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="73,157,143,120,162,112,164,117,145,125,75,162"/>
+<area shape="rect" id="Node000004" href="$classGame.html#a815a3ec2787b4b1c4077d28165c380e8" title="Verwerkt SFML&#45;events (toetsenbord, venster sluiten, ...) voor deze frame." alt="" coords="157,134,309,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,163,143,157,143,162,97,168"/>
+<area shape="rect" id="Node000007" href="$classGame.html#a33f89f7c50d05019d226a665f6b6c794" title="Tekent het huidige frame (arena, HUD, overlays, ...) op het venster." alt="" coords="177,183,288,209"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="97,175,164,184,163,190,96,181"/>
+<area shape="rect" id="Node000008" href="$classbomberman_1_1Stopwatch.html#a30b667864a085ddd79fa549cdbe62f2a" title="Registreert een nieuwe tick; moet één keer per frame aangeroepen worden." alt="" coords="144,233,321,273"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="75,182,145,219,162,226,160,231,143,224,73,187"/>
+<area shape="rect" id="Node000009" href="$classGame.html#aa8c8ca9efb596230614be2f2f9e61b86" title="Werkt de spellogica (World) en timers bij met het gegeven deltaTime." alt="" coords="175,298,290,323"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="61,184,93,232,117,260,145,283,164,293,161,297,143,288,114,264,89,236,57,187"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1CommandHistory.html#a1a857a1409eb8ae2f9270286b13aa4e6" title="Voegt een uitgevoerde command toe aan de geschiedenis." alt="" coords="369,99,592,139"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="309,135,355,130,356,135,309,141"/>
+<area shape="rect" id="Node000006" href="$classGame.html#abf0598736d0752b99711691b0ef8203a" title="Zet World/Score/Factory terug in beginstaat voor een nieuwe game." alt="" coords="397,163,564,189"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="309,153,384,162,383,167,309,158"/>
+</map>

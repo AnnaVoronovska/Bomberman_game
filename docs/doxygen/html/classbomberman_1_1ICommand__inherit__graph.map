@@ -1,0 +1,7 @@
+<map id="bomberman::ICommand" name="bomberman::ICommand">
+<area shape="rect" id="Node000001" title="Command&#45;interface: elke concrete command weet hoe hij zichzelf op een World uitvoert,..." alt="" coords="144,5,316,111"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1MoveCommand.html" title="Verandert de bewegingsrichting van de speler (Direction::None = stilstaan)." alt="" coords="5,159,209,284"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,123,157,160,152,157,180,120"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1PlaceBombCommand.html" title="Vraagt aan om een bom te plaatsen op de huidige positie van de speler. De effectieve validatie (canPl..." alt="" coords="233,179,475,264"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,120,324,177,320,180,276,124"/>
+</map>

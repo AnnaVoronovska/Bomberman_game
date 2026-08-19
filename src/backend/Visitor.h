@@ -18,6 +18,7 @@ class Door;
 class Bomb;
 class Character;
 
+/// @brief Visitor-interface: één visit-overload per concreet entiteitstype.
 class EntityVisitor {
 public:
     virtual ~EntityVisitor() = default;

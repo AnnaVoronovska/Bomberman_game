@@ -1,0 +1,5 @@
+<map id="AudioManager" name="AudioManager">
+<area shape="rect" id="Node000001" title="Speelt geluidseffecten en achtergrondmuziek af als reactie op Events uit de logic&#45;library (zie uitleg..." alt="" coords="5,139,179,564"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Observer.html" title="Observer&#45;kant van het patroon: ontvangt Events van een Subject." alt="" coords="12,5,172,91"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,105,95,138,89,138,89,105"/>
+</map>

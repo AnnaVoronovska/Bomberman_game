@@ -1,0 +1,5 @@
+<map id="bomberman::Score::registerFinalScore" name="bomberman::Score::registerFinalScore">
+<area shape="rect" id="Node000001" title="Voegt de huidige score toe aan de top&#45;5 tabel, indien hoog genoeg." alt="" coords="261,5,464,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1Score.html#a3fa286a74eec04ee4ad5b7c52c42c235" title="Verwerkt een binnenkomend Event tot een aanpassing van de huidige score." alt="" coords="5,13,213,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="248,28,214,28,214,23,248,23"/>
+</map>

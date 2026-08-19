@@ -1,0 +1,17 @@
+<map id="bomberman::Subject" name="bomberman::Subject">
+<area shape="rect" id="Node000001" title="Subject&#45;kant van het patroon: houdt Observers bij en stuurt hen Events." alt="" coords="540,5,689,111"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1EntityModel.html" title="Basisklasse (Model) voor elke spel&#45;entiteit. Erft van Subject zodat Views zich via het Observer&#45;patro..." alt="" coords="419,369,597,654"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="602,125,544,369,539,368,597,123"/>
+<area shape="rect" id="Node000008" href="$classbomberman_1_1World.html" title="World is de &quot;Controller&quot; uit MVC: bezit alle entity&#45;Models en regisseert de volledige spellogica (spa..." alt="" coords="622,159,821,864"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="633,124,641,158,636,159,627,125"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1Bomb.html" title="Een geplaatste bom die na een lonttijd ontploft in een kruispatroon." alt="" coords="5,972,187,1317"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="412,626,305,760,251,836,201,913,169,973,164,970,196,911,246,833,301,757,408,623"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1Character.html" title="Een speelbaar of bot&#45;gestuurd character (Player of vijand)." alt="" coords="211,912,418,1377"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="463,668,388,913,383,911,458,666"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1Door.html" title=" " alt="" coords="442,1102,574,1187"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="511,668,511,1102,505,1102,505,668"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1PowerUp.html" title="Een oprapbare power&#45;up die een character een permanente stat&#45;boost geeft." alt="" coords="598,1082,757,1207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="552,667,663,1081,658,1083,547,668"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1Wall.html" title="Een muurblok in de arena, breekbaar of onverwoestbaar." alt="" coords="781,1082,910,1207"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="523,667,535,719,553,771,579,820,613,862,632,877,650,884,690,886,730,888,751,895,771,910,801,949,822,993,835,1039,843,1081,838,1082,830,1040,817,995,797,951,767,914,748,900,729,893,690,891,649,889,629,881,609,866,574,822,549,773,530,721,518,668"/>
+</map>

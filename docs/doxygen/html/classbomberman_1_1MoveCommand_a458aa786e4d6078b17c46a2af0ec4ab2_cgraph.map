@@ -1,0 +1,5 @@
+<map id="bomberman::MoveCommand::execute" name="bomberman::MoveCommand::execute">
+<area shape="rect" id="Node000001" title="Voert deze command uit op de gegeven World." alt="" coords="5,5,217,45"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#af77cb872a43374db92cf58dc346dc0fa" title="Zet de bewegingsrichting van de speler (input van representatie&#45;laag)." alt="" coords="265,5,480,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,23,252,23,252,28,218,28"/>
+</map>

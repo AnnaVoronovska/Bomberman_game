@@ -1,0 +1,18 @@
+<map id="bomberman::EntityModel::getPosition" name="bomberman::EntityModel::getPosition">
+<area shape="rect" id="Node000001" title=" " alt="" coords="845,133,1032,173"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1World.html#a62005bf15a82d33f456309a1e05e346a" title=" " alt="" coords="553,45,797,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="869,131,710,73,712,68,871,126"/>
+<area shape="rect" id="Node000006" href="$classbomberman_1_1World.html#af2cfda92a91655411325fe42f263fec8" title=" " alt="" coords="275,133,483,173"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="832,156,483,156,483,151,832,151"/>
+<area shape="rect" id="Node000007" href="$classbomberman_1_1World.html#a097a0b1b0a2f2d7b1172bcf8264b85d7" title=" " alt="" coords="576,191,775,231"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="833,179,768,193,767,188,832,174"/>
+<area shape="rect" id="Node000003" href="$classbomberman_1_1World.html#a0067d2ade4c6c10bf7196962087e1dfa" title=" " alt="" coords="252,5,505,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="539,54,484,48,485,43,540,49"/>
+<area shape="rect" id="Node000004" href="$classbomberman_1_1World.html#a3ce2c9ecd9a14f9b666552baff8ba611" title=" " alt="" coords="279,69,478,109"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="544,74,478,81,478,76,543,69"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="520,29,622,42,622,47,519,34"/>
+<area shape="rect" id="Node000005" href="$classbomberman_1_1World.html#adbe51085c0878e36a4a71b8fe7ad4b46" title="Werkt de volledige spelwereld één tick bij (deltaTime seconden verder)." alt="" coords="5,141,204,166"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="279,115,161,143,159,138,278,110"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="261,156,204,156,204,151,261,151"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="562,211,414,204,252,188,154,169,156,163,252,183,415,199,563,206"/>
+</map>

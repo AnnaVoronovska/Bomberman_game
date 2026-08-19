@@ -1,0 +1,5 @@
+<map id="bomberman::MoveCommand" name="bomberman::MoveCommand">
+<area shape="rect" id="Node000001" title="Verandert de bewegingsrichting van de speler (Direction::None = stilstaan)." alt="" coords="5,159,209,284"/>
+<area shape="rect" id="Node000002" href="$classbomberman_1_1ICommand.html" title="Command&#45;interface: elke concrete command weet hoe hij zichzelf op een World uitvoert,..." alt="" coords="21,5,193,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,124,110,158,105,158,105,124"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="BombView::isExpired" name="BombView::isExpired">
+<area shape="rect" id="Node000001" title="Geeft terug of het onderliggende Model verdwenen is en de View opgeruimd mag worden." alt="" coords="5,5,164,31"/>
+<area shape="rect" id="Node000002" href="$classEntityView.html#ab5485186b98206e971a0ce70c14dc1dd" title="Geeft terug of het onderliggende Model verdwenen is en de View opgeruimd mag worden." alt="" coords="212,5,371,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,15,198,15,198,21,164,21"/>
+</map>

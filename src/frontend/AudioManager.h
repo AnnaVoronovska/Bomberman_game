@@ -24,25 +24,39 @@
 // op stderr) zodat het spel ook zonder audio-assets blijft draaien.
 // ============================================================
 
+/**
+ * @brief Speelt geluidseffecten en achtergrondmuziek af als reactie op Events
+ * uit de logic-library (zie uitleg bovenaan dit bestand voor de aansluitpunten).
+ */
 class AudioManager : public bomberman::Observer {
 public:
     AudioManager();
 
+    /// @brief Speelt het gepaste geluidseffect af op basis van het binnenkomende Event.
     void onNotify(const bomberman::Event& event) override;
 
-    // Wordt door Game aangeroepen op het moment dat de speler de deur bereikt
-    // en naar een volgend level gaat (geen apart Event-type nodig hiervoor:
-    // Game::update() detecteert dit al via World::consumeStageAdvanced()).
+    /**
+     * @brief Wordt door Game aangeroepen op het moment dat de speler de deur bereikt
+     * en naar een volgend level gaat (geen apart Event-type nodig hiervoor:
+     * Game::update() detecteert dit al via World::consumeStageAdvanced()).
+     */
     void playNextLevelSound();
 
-    // Wordt door Game aangeroepen zodra de "Play"-knop op het startscherm
-    // ingedrukt wordt (geen World/Event-koppeling nodig: puur UI-feedback).
+    /**
+     * @brief Wordt door Game aangeroepen zodra de "Play"-knop op het startscherm
+     * ingedrukt wordt (geen World/Event-koppeling nodig: puur UI-feedback).
+     */
     void playClickSound();
 
+    /// @brief Start achtergrondmuziek vanaf het opgegeven pad, optioneel in lus.
     void playMusic(const std::string& path, bool loop = true);
+    /// @brief Pauzeert de huidige achtergrondmuziek.
     void pauseMusic();
+    /// @brief Stopt de achtergrondmuziek volledig.
     void stopMusic();
+    /// @brief Zet het muziekvolume (0-100).
     void setMusicVolume(float volume); // 0-100
+    /// @brief Zet het volume van geluidseffecten (0-100).
     void setSfxVolume(float volume);   // 0-100
 
 private:
