@@ -77,8 +77,19 @@ std::shared_ptr<Door> ConcreteFactory::createDoor(Vec2 position) {
 }
 
 void ConcreteFactory::drawAll(sf::RenderWindow& window, double deltaTime) {
+    // Characters (speler + vijanden) worden altijd als laatste getekend, ongeacht
+    // hun aanmaakvolgorde in views_. Zonder dit werd de deur (die pas aangemaakt
+    // wordt zodra de muur errond ontploft, en dus ACHTERAAN in views_ terechtkomt)
+    // bovenop de vijanden getekend zodra ze over de deurtegel liepen: het leek
+    // dan alsof ze "onder" de deur doorwandelden. Logisch/qua pathfinding blijven
+    // vijanden de deur nog steeds negeren (zie World::walkable) - dit is puur een
+    // teken-volgorde (z-order) fix, geen gameplay-wijziging.
     for (auto& v : views_) {
-        if (!v->isExpired())
+        if (!v->isExpired() && !std::dynamic_pointer_cast<CharacterView>(v))
+            v->draw(window, deltaTime);
+    }
+    for (auto& v : views_) {
+        if (!v->isExpired() && std::dynamic_pointer_cast<CharacterView>(v))
             v->draw(window, deltaTime);
     }
 }
